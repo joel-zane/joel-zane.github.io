@@ -513,6 +513,12 @@ a:hover { color: var(--text); }
   margin: 24px 0 8px;
 }
 .post-content .body p { margin-bottom: 16px; }
+.post-content .body img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 16px 0;
+  display: block;
+}
 .post-content .body ul, .post-content .body ol {
   margin-bottom: 16px;
   padding-left: 24px;
