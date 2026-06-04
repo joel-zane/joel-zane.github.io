@@ -2,7 +2,8 @@
   {
     "title": "一期一会博客",
     "description": "基于 Hugo 的个人博客系统，使用 Archie 主题",
-    "image": "",
+    "image": "/images/projects/blog.jpg",
+    "date": "2026-06-04",
     "tags": ["Hugo", "博客", "静态站点"],
     "github": "https://github.com/joel-zane/joel-zane.github.io",
     "demo": "https://joel-zane.github.io/"
@@ -10,7 +11,8 @@
   {
     "title": "Hermes Agent 配置",
     "description": "个人 AI 助手配置与自动化脚本",
-    "image": "",
+    "image": "/images/projects/hermes.jpg",
+    "date": "2026-05-15",
     "tags": ["AI", "自动化", "Python"],
     "github": "https://github.com/joel-zane",
     "demo": ""
@@ -18,7 +20,8 @@
   {
     "title": "机器学习项目",
     "description": "深度学习与机器学习相关实验",
-    "image": "",
+    "image": "/images/projects/ml.jpg",
+    "date": "2026-04-20",
     "tags": ["ML", "PyTorch", "Python"],
     "github": "https://github.com/joel-zane",
     "demo": ""

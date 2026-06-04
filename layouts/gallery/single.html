@@ -10,6 +10,9 @@
       <div class="gallery-overlay">
         <h4>{{ .title }}</h4>
         <p>{{ .description }}</p>
+        {{ if .date }}
+        <span class="gallery-date">📅 {{ .date }}</span>
+        {{ end }}
       </div>
     </div>
     {{ end }}
@@ -65,9 +68,14 @@
 }
 
 .gallery-overlay p {
-  margin: 0;
+  margin: 0 0 0.25rem 0;
   font-size: 0.85rem;
   opacity: 0.9;
+}
+
+.gallery-date {
+  font-size: 0.75rem;
+  opacity: 0.8;
 }
 </style>
 {{ end }}

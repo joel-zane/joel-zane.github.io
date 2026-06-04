@@ -4,12 +4,17 @@ title = "一期一会"
 theme = "archie"
 copyright = "© 2026 Joel Zane"
 
+[markup.goldmark.renderer]
+  unsafe = true
+
 [params]
   mode = "auto"
   useCDN = false
   subtitle = "一个关于AI、技术与生活的个人博客"
   mathjax = false
   katex = false
+  # 不蒜子访问统计
+  busuanzi = true
 
 # Social Links
 [[params.social]]
@@ -20,7 +25,7 @@ copyright = "© 2026 Joel Zane"
 [[params.social]]
   name = "Email"
   icon = "mail"
-  url = "mailto:joel.zane@outlook.com"
+  url = "mailto:3151798198@qq.com"
 
 # Main Menu
 [[menu.main]]

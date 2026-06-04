@@ -1,17 +1,38 @@
 [
   {
-    "title": "示例图片 1",
-    "description": "这是一张示例图片",
-    "image": "/images/gallery/placeholder.jpg"
+    "title": "东京塔",
+    "description": "日本东京的标志性建筑",
+    "image": "/images/gallery/tokyo-tower.jpg",
+    "date": "2025-12-15"
   },
   {
-    "title": "示例图片 2",
-    "description": "这是另一张示例图片",
-    "image": "/images/gallery/placeholder.jpg"
+    "title": "樱花",
+    "description": "春天的樱花盛开",
+    "image": "/images/gallery/sakura.jpg",
+    "date": "2025-04-01"
   },
   {
-    "title": "示例图片 3",
-    "description": "第三张示例图片",
-    "image": "/images/gallery/placeholder.jpg"
+    "title": "代码",
+    "description": "深夜写代码",
+    "image": "/images/gallery/coding.jpg",
+    "date": "2026-03-20"
+  },
+  {
+    "title": "篮球",
+    "description": "NBA 比赛精彩瞬间",
+    "image": "/images/gallery/basketball.jpg",
+    "date": "2026-01-10"
+  },
+  {
+    "title": "动漫",
+    "description": "喜欢的动漫截图",
+    "image": "/images/gallery/anime.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "title": "校园",
+    "description": "美丽的校园风景",
+    "image": "/images/gallery/campus.jpg",
+    "date": "2026-05-01"
   }
 ]
