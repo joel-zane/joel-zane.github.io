@@ -4,11 +4,14 @@
     <div class="hero-left">
         <h1>你好，世界</h1>
         <p class="subtitle">记录 AI、技术与生活的点滴。</p>
-        <p class="meta"><span class="label">最近更新</span> {{ dateFormat "Jan 2, 2006" (index .Site.RegularPages 0).Date }}</p>
+        {{ $posts := where .Site.RegularPages "Section" "posts" }}
+        {{ with $posts }}
+        <p class="meta"><span class="label">最近更新</span> {{ dateFormat "Jan 2, 2006" (index . 0).Date }}</p>
+        {{ end }}
 
         <h2 class="section-title"># 最新文章</h2>
         <ul class="post-list">
-            {{ range first 5 .Site.RegularPages }}
+            {{ range first 5 $posts }}
             <li>
                 <a href="{{ .RelPermalink }}">{{ .Title }}</a>
                 <time>{{ dateFormat "Jan 2, 2006" .Date }}</time>
@@ -38,11 +41,6 @@
         <ul class="card-list">
             {{ range where (index .Site.Data "projects") "featured" true }}
             <li><a href="{{ .url }}">{{ .name }}</a></li>
-            {{ end }}
-            {{ if not (index .Site.Data "projects") }}
-            <li><a href="/projects/">Hermes AI Assistant</a></li>
-            <li><a href="/projects/">个人知识库</a></li>
-            <li><a href="/projects/">网站与工具</a></li>
             {{ end }}
         </ul>
         <a href="/projects/" class="view-all">查看全部项目 →</a>
