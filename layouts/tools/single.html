@@ -6,15 +6,22 @@
 
 {{ $tools := .Site.Data.tools }}
 {{ if $tools }}
+{{ $categories := slice }}
+{{ range $tools }}{{ if not (in $categories .category) }}{{ $categories = $categories | append .category }}{{ end }}{{ end }}
+{{ range $cat := $categories }}
+<h2 class="section-heading"># {{ $cat }}</h2>
 <div class="tools-grid">
     {{ range $tools }}
+    {{ if eq .category $cat }}
     <div class="tool-card">
         <h3>{{ .name }}</h3>
         <p>{{ .description }}</p>
-        {{ if .url }}<a href="{{ .url }}" class="view-all" style="display:inline-block;margin-top:8px;font-size:0.82rem;">访问 →</a>{{ end }}
+        {{ if .url }}<a href="{{ .url }}" target="_blank" class="view-all" style="display:inline-block;margin-top:8px;font-size:0.82rem;">访问 →</a>{{ end }}
     </div>
     {{ end }}
+    {{ end }}
 </div>
+{{ end }}
 {{ else }}
 {{ .Content }}
 {{ end }}

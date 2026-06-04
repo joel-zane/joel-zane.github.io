@@ -1,71 +1,98 @@
 [
   {
-    "category": "开发工具",
-    "items": [
-      {
-        "name": "VS Code",
-        "icon": "💻",
-        "description": "代码编辑器",
-        "url": "https://code.visualstudio.com/"
-      },
-      {
-        "name": "Git",
-        "icon": "📦",
-        "description": "版本控制",
-        "url": "https://git-scm.com/"
-      },
-      {
-        "name": "Python",
-        "icon": "🐍",
-        "description": "编程语言",
-        "url": "https://www.python.org/"
-      }
-    ]
+    "name": "Hugo",
+    "description": "静态网站生成器，用于构建本博客",
+    "url": "https://gohugo.io/",
+    "category": "开发"
   },
   {
-    "category": "AI 工具",
-    "items": [
-      {
-        "name": "PyTorch",
-        "icon": "🔥",
-        "description": "深度学习框架",
-        "url": "https://pytorch.org/"
-      },
-      {
-        "name": "Hugging Face",
-        "icon": "🤗",
-        "description": "AI 模型平台",
-        "url": "https://huggingface.co/"
-      },
-      {
-        "name": "OpenAI",
-        "icon": "🤖",
-        "description": "AI API 服务",
-        "url": "https://openai.com/"
-      }
-    ]
+    "name": "Git",
+    "description": "版本控制工具",
+    "url": "https://git-scm.com/",
+    "category": "开发"
   },
   {
-    "category": "效率工具",
-    "items": [
-      {
-        "name": "Notion",
-        "icon": "📝",
-        "description": "笔记与项目管理",
-        "url": "https://www.notion.so/"
-      },
-      {
-        "name": "Obsidian",
-        "icon": "💎",
-        "description": "本地知识库",
-        "url": "https://obsidian.md/"
-      },
-      {
-        "name": "Raycast",
-        "icon": "⚡",
-        "description": "启动器 (macOS)",
-        "url": "https://www.raycast.com/"
-      }
-    ]
+    "name": "Python",
+    "description": "主要编程语言，用于AI/ML和自动化脚本",
+    "url": "https://www.python.org/",
+    "category": "开发"
+  },
+  {
+    "name": "VS Code",
+    "description": "代码编辑器",
+    "url": "https://code.visualstudio.com/",
+    "category": "开发"
+  },
+  {
+    "name": "Linux",
+    "description": "服务器操作系统，Oracle Cloud ARM64",
+    "url": "https://ubuntu.com/",
+    "category": "运维"
+  },
+  {
+    "name": "Docker",
+    "description": "容器化部署工具",
+    "url": "https://www.docker.com/",
+    "category": "运维"
+  },
+  {
+    "name": "Oracle Cloud",
+    "description": "云服务器，托管个人项目",
+    "url": "https://www.oracle.com/cloud/",
+    "category": "运维"
+  },
+  {
+    "name": "1Panel",
+    "description": "服务器管理面板",
+    "url": "https://1panel.cn/",
+    "category": "运维"
+  },
+  {
+    "name": "Obsidian",
+    "description": "知识管理与笔记工具",
+    "url": "https://obsidian.md/",
+    "category": "效率"
+  },
+  {
+    "name": "Figma",
+    "description": "UI/UX 设计工具",
+    "url": "https://www.figma.com/",
+    "category": "效率"
+  },
+  {
+    "name": "Notion",
+    "description": "项目管理与协作文档",
+    "url": "https://www.notion.so/",
+    "category": "效率"
+  },
+  {
+    "name": "Hermes Agent",
+    "description": "AI 助手，自动化日常任务",
+    "url": "https://github.com/joel-zane",
+    "category": "AI"
+  },
+  {
+    "name": "Hugging Face",
+    "description": "AI 模型与数据集平台",
+    "url": "https://huggingface.co/",
+    "category": "AI"
+  },
+  {
+    "name": "PyTorch",
+    "description": "深度学习框架",
+    "url": "https://pytorch.org/",
+    "category": "AI"
+  },
+  {
+    "name": "GitHub",
+    "description": "代码托管平台",
+    "url": "https://github.com/joel-zane",
+    "category": "开发"
+  },
+  {
+    "name": "AniList",
+    "description": "追番与动漫记录",
+    "url": "https://anilist.co/",
+    "category": "娱乐"
   }
 ]
