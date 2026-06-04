@@ -4,7 +4,7 @@ layout: "home"
 ---
 
 <div class="hero">
-  <img src="/images/avatar.jpg" alt="Joel Zane" class="hero-avatar">
+  <img src="/images/avatar.svg" alt="Joel Zane" class="hero-avatar">
   <div class="hero-content">
     <h1>嗨，我是 Joel Zane 👋</h1>
     <p class="hero-subtitle">一个对 AI、技术和二次元充满热情的学生</p>

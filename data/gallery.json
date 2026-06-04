@@ -2,37 +2,37 @@
   {
     "title": "东京塔",
     "description": "日本东京的标志性建筑",
-    "image": "/images/gallery/tokyo-tower.jpg",
+    "image": "/images/gallery/tokyo-tower.svg",
     "date": "2025-12-15"
   },
   {
     "title": "樱花",
     "description": "春天的樱花盛开",
-    "image": "/images/gallery/sakura.jpg",
+    "image": "/images/gallery/sakura.svg",
     "date": "2025-04-01"
   },
   {
     "title": "代码",
     "description": "深夜写代码",
-    "image": "/images/gallery/coding.jpg",
+    "image": "/images/gallery/coding.svg",
     "date": "2026-03-20"
   },
   {
     "title": "篮球",
     "description": "NBA 比赛精彩瞬间",
-    "image": "/images/gallery/basketball.jpg",
+    "image": "/images/gallery/basketball.svg",
     "date": "2026-01-10"
   },
   {
     "title": "动漫",
     "description": "喜欢的动漫截图",
-    "image": "/images/gallery/anime.jpg",
+    "image": "/images/gallery/anime.svg",
     "date": "2025-08-05"
   },
   {
     "title": "校园",
     "description": "美丽的校园风景",
-    "image": "/images/gallery/campus.jpg",
+    "image": "/images/gallery/campus.svg",
     "date": "2026-05-01"
   }
 ]

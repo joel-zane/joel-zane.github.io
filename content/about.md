@@ -3,7 +3,7 @@ title: "关于我"
 ---
 
 <div class="about-hero">
-  <img src="/images/avatar.jpg" alt="Joel Zane" class="avatar">
+  <img src="/images/avatar.svg" alt="Joel Zane" class="avatar">
   <div class="about-intro">
     <h1>Joel Zane</h1>
     <p class="tagline">学生 · AI 爱好者 · 二次元</p>
