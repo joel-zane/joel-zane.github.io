@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{ if .Params.description }}<p>{{ .Params.description }}</p>{{ end }}
+</div>
+
+{{ $pages := where .Site.RegularPages "Section" "projects" }}
+{{ range $pages }}
+<div class="post-entry" style="display:flex;gap:20px;align-items:flex-start;">
+    {{ if .Params.image }}
+    <img src="{{ .Params.image }}" alt="{{ .Title }}" style="width:200px;height:130px;object-fit:cover;border-radius:6px;flex-shrink:0;">
+    {{ end }}
+    <div>
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <time>{{ dateFormat "Jan 2, 2006" .Date }}</time>
+        {{ if .Description }}<p class="desc">{{ .Description }}</p>{{ end }}
+        <div class="tags" style="margin-top:8px;">
+            {{ range .Params.tags }}<span class="tag">{{ . }}</span>{{ end }}
+        </div>
+        <div style="margin-top:8px;display:flex;gap:12px;">
+            {{ if .Params.github }}<a href="{{ .Params.github }}" target="_blank" style="font-size:0.85rem;color:#4ade80;">GitHub →</a>{{ end }}
+            {{ if .Params.download }}<a href="{{ .Params.download }}" style="font-size:0.85rem;color:#4ade80;">⬇ 下载</a>{{ end }}
+            {{ if .Params.demo }}<a href="{{ .Params.demo }}" target="_blank" style="font-size:0.85rem;color:#4ade80;">在线演示 →</a>{{ end }}
+        </div>
+    </div>
+</div>
+{{ end }}
+{{ end }}

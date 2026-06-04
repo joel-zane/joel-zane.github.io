@@ -38,8 +38,10 @@
 
         <h2 class="section-title"># 精选项目</h2>
         <ul class="card-list">
-            {{ range where (index .Site.Data "projects") "featured" true }}
-            <li><a href="{{ .url }}">{{ .name }}</a></li>
+            {{ range where .Site.RegularPages "Section" "projects" }}
+            {{ if .Params.github }}
+            <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ end }}
             {{ end }}
         </ul>
         <a href="/projects/" class="view-all">查看全部项目 →</a>
