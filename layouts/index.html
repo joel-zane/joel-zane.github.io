@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	{{ partial "header.html" . }}
+	<body>
+		<div class="content">
+			{{ partial "head.html" . }}
+			
+			<main class="list">
+				<!-- 头像 + 个人信息 -->
+				<div class="site-description" style="text-align:center; padding: 2em 0 1em;">
+					<img src="/images/avatar.svg" alt="Joel Zane" style="width:100px;height:100px;border-radius:50%;margin-bottom:12px;object-fit:cover;">
+					{{- if isset .Site.Params "subtitle" -}}
+					<p style="font-size:1.1em;color:#888;">{{ .Site.Params.Subtitle | .Page.RenderString }}</p>
+					{{- end -}}
+					<div style="margin-top:12px;">
+						<span class="tag" style="background:#222;color:#aaa;padding:4px 10px;border-radius:4px;font-size:0.85em;margin:3px;display:inline-block;">AI/ML</span>
+						<span class="tag" style="background:#222;color:#aaa;padding:4px 10px;border-radius:4px;font-size:0.85em;margin:3px;display:inline-block;">计算机</span>
+						<span class="tag" style="background:#222;color:#aaa;padding:4px 10px;border-radius:4px;font-size:0.85em;margin:3px;display:inline-block;">二次元</span>
+						<span class="tag" style="background:#222;color:#aaa;padding:4px 10px;border-radius:4px;font-size:0.85em;margin:3px;display:inline-block;">NBA</span>
+						<span class="tag" style="background:#222;color:#aaa;padding:4px 10px;border-radius:4px;font-size:0.85em;margin:3px;display:inline-block;">摄影</span>
+					</div>
+					<!-- 不蒜子访问统计 -->
+					{{- if .Site.Params.busuanzi -}}
+					<div style="margin-top:14px;font-size:0.82em;color:#666;">
+						<span id="busuanzi_container_site_pv">总访问 <span id="busuanzi_value_site_pv" style="color:#888;font-weight:600;">...</span> 次</span>
+						&nbsp;·&nbsp;
+						<span id="busuanzi_container_site_uv">访客 <span id="busuanzi_value_site_uv" style="color:#888;font-weight:600;">...</span> 人</span>
+					</div>
+					{{- end -}}
+				</div>
+
+				<!-- 最新文章 -->
+				<h2 style="margin:1.5em 0 0.8em;font-size:1.1em;color:#888;">📝 最新文章</h2>
+				{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+				{{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
+				{{ range $paginator.Pages }}
+				<section class="list-item">
+					<h1 class="title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h1>
+					<time>{{ dateFormat ":date_medium" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</time>
+					<br>{{ template "partials/pagedescription.html" . }}
+					<a class="readmore" href="{{ .RelPermalink }}">Read more ⟶</a>
+				</section>
+				{{ end }}
+				{{ template "partials/paginator.html" . }}
+			</main>
+			{{ partial "footer.html" . }}
+		</div>
+		
+	</body>
+</html>

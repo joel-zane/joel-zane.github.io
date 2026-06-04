@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    {{- partial "header.html" . -}}
+    <body>
+        <div class="content">
+        {{- partial "head.html" . -}}
+        {{- block "main" . }}{{- end }}
+        {{- partial "footer.html" . -}}
+        </div>
+        <!-- 不蒜子访问统计 -->
+        {{- if .Site.Params.busuanzi -}}
+        <script defer src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        {{- end -}}
+    </body>
+</html>

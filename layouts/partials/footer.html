@@ -1,39 +1,23 @@
 <footer>
   <div style="display:flex">
-    {{ with .Site.Params.social }}
-      {{ range . }}
-        <a class="soc" href="{{ .url }}" rel="me" title="{{ .name }}">
-          <svg class="feather"><use href="/svg/feather-sprite.svg#{{ .icon }}"/></svg>
-        </a>
-        <a class="border"></a>
-      {{ end }}
-    {{ end }}
+    {{- range $index, $key := .Site.Params.Social -}}
+    {{- if hasPrefix $key.icon "simple:" -}}
+    <a class="soc" href="{{ $key.url }}" rel="me" title="{{ $key.name }}"><i class="si si-{{ substr $key.icon 7 }}"></i></a>
+    {{- else -}}
+    <a class="soc" href="{{ $key.url }}" rel="me" title="{{ $key.name }}">{{ template "feathericon" (dict "Icon" $key.icon "UseCDN" .Site.Params.useCDN) }}</a>
+    {{- end -}}
+    <a class="border"></a>
+    {{- end -}}
   </div>
-  
-  {{ if .Site.Params.busuanzi }}
-  <div class="busuanzi-stats">
-    <span id="busuanzi_container_site_pv">
-      👁️ 总访问量: <span id="busuanzi_value_site_pv">-</span> 次
-    </span>
-    <span style="margin-left: 1.5rem;" id="busuanzi_container_site_uv">
-      👤 访客数: <span id="busuanzi_value_site_uv">-</span> 人
-    </span>
-  </div>
-  {{ end }}
-  
   <div class="footer-info">
-    {{ .Site.Copyright }}
+    {{ dateFormat "2006" now }} {{ with .Site.Copyright }} {{ . }} | {{ end }}
+    {{- if .Site.Params.busuanzi -}}
+    <span id="busuanzi_container_site_pv" style="font-size:12px;opacity:0.7;">
+      | 总访问 <span id="busuanzi_value_site_pv"></span> 次
+    </span>
+    {{- end -}}
   </div>
-
-  {{ if .Site.Params.busuanzi }}
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  {{ end }}
 </footer>
-
-<style>
-.busuanzi-stats {
-  margin: 0.5rem 0;
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-}
-</style>
+{{ if not hugo.IsServer }}
+{{ template "_internal/google_analytics.html" . }}
+{{ end }}
