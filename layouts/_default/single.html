@@ -1,0 +1,10 @@
+{{ define "main" }}
+<article class="post-content">
+    <a href="{{ if .Parent }}{{ .Parent.RelPermalink }}{{ else }}/{{ end }}" class="back-link">← 返回</a>
+    <h1>{{ .Title }}</h1>
+    <time>{{ dateFormat "Jan 2, 2006" .Date }}</time>
+    <div class="body">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}

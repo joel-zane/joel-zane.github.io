@@ -1,50 +1,60 @@
-<!DOCTYPE html>
-<html>
-	{{ partial "header.html" . }}
-	<body>
-		<div class="content">
-			{{ partial "head.html" . }}
-			
-			<main class="list">
-				<!-- 头像 + 个人信息 -->
-				<div class="site-description" style="text-align:center; padding: 2em 0 1em;">
-					<img src="/images/avatar.svg" alt="Joel Zane" style="width:100px;height:100px;border-radius:50%;margin-bottom:12px;object-fit:cover;">
-					{{- if isset .Site.Params "subtitle" -}}
-					<p style="font-size:1.1em;color:#888;">{{ .Site.Params.Subtitle | .Page.RenderString }}</p>
-					{{- end -}}
-					<div style="margin-top:12px;">
-						<span class="tag" style="background:#222;color:#aaa;padding:4px 10px;border-radius:4px;font-size:0.85em;margin:3px;display:inline-block;">AI/ML</span>
-						<span class="tag" style="background:#222;color:#aaa;padding:4px 10px;border-radius:4px;font-size:0.85em;margin:3px;display:inline-block;">计算机</span>
-						<span class="tag" style="background:#222;color:#aaa;padding:4px 10px;border-radius:4px;font-size:0.85em;margin:3px;display:inline-block;">二次元</span>
-						<span class="tag" style="background:#222;color:#aaa;padding:4px 10px;border-radius:4px;font-size:0.85em;margin:3px;display:inline-block;">NBA</span>
-						<span class="tag" style="background:#222;color:#aaa;padding:4px 10px;border-radius:4px;font-size:0.85em;margin:3px;display:inline-block;">摄影</span>
-					</div>
-					<!-- 不蒜子访问统计 -->
-					{{- if .Site.Params.busuanzi -}}
-					<div style="margin-top:14px;font-size:0.82em;color:#666;">
-						<span id="busuanzi_container_site_pv">总访问 <span id="busuanzi_value_site_pv" style="color:#888;font-weight:600;">...</span> 次</span>
-						&nbsp;·&nbsp;
-						<span id="busuanzi_container_site_uv">访客 <span id="busuanzi_value_site_uv" style="color:#888;font-weight:600;">...</span> 人</span>
-					</div>
-					{{- end -}}
-				</div>
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-left">
+        <h1>你好，世界</h1>
+        <p class="subtitle">记录 AI、技术与生活的点滴。</p>
+        <p class="meta"><span class="label">最近更新</span> {{ dateFormat "Jan 2, 2006" (index .Site.RegularPages 0).Date }}</p>
 
-				<!-- 最新文章 -->
-				<h2 style="margin:1.5em 0 0.8em;font-size:1.1em;color:#888;">📝 最新文章</h2>
-				{{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-				{{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) }}
-				{{ range $paginator.Pages }}
-				<section class="list-item">
-					<h1 class="title"><a href="{{ .RelPermalink }}">{{.Title}}</a></h1>
-					<time>{{ dateFormat ":date_medium" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</time>
-					<br>{{ template "partials/pagedescription.html" . }}
-					<a class="readmore" href="{{ .RelPermalink }}">Read more ⟶</a>
-				</section>
-				{{ end }}
-				{{ template "partials/paginator.html" . }}
-			</main>
-			{{ partial "footer.html" . }}
-		</div>
-		
-	</body>
-</html>
+        <h2 class="section-title"># 最新文章</h2>
+        <ul class="post-list">
+            {{ range first 5 .Site.RegularPages }}
+            <li>
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                <time>{{ dateFormat "Jan 2, 2006" .Date }}</time>
+            </li>
+            {{ end }}
+        </ul>
+        <a href="/posts/" class="view-all">查看全部文章 →</a>
+
+        {{ if .Site.Params.busuanzi }}
+        <div class="stats">
+            <span>总访问 <span id="busuanzi_value_site_pv">...</span> 次</span>
+            <span>访客 <span id="busuanzi_value_site_uv">...</span> 人</span>
+        </div>
+        {{ end }}
+    </div>
+
+    <div class="hero-right">
+        <div class="code-block"><span class="line-num">1</span> <span class="comment">// life.js</span>
+<span class="line-num">2</span> const life = () => (
+<span class="line-num">3</span>   learn();
+<span class="line-num">4</span>   build();
+<span class="line-num">5</span>   share();
+<span class="line-num">6</span> )
+<span class="line-num">7</span> <span class="comment">// Keep learning. Keep creating.</span></div>
+
+        <h2 class="section-title"># 精选项目</h2>
+        <ul class="card-list">
+            {{ range where (index .Site.Data "projects") "featured" true }}
+            <li><a href="{{ .url }}">{{ .name }}</a></li>
+            {{ end }}
+            {{ if not (index .Site.Data "projects") }}
+            <li><a href="/projects/">Hermes AI Assistant</a></li>
+            <li><a href="/projects/">个人知识库</a></li>
+            <li><a href="/projects/">网站与工具</a></li>
+            {{ end }}
+        </ul>
+        <a href="/projects/" class="view-all">查看全部项目 →</a>
+
+        <h2 class="section-title"># 快速导航</h2>
+        <ul class="nav-list">
+            <li><a href="/posts/">博客</a></li>
+            <li><a href="/projects/">项目</a></li>
+            <li><a href="/gallery/">画廊</a></li>
+            <li><a href="/timeline/">时间线</a></li>
+            <li><a href="/about/">关于</a></li>
+        </ul>
+    </div>
+</section>
+{{ end }}
