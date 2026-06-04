@@ -1,0 +1,6 @@
+{{- $pages := .Site.RegularPages -}}
+{{- $result := slice -}}
+{{- range $pages -}}
+  {{- $result = $result | append (dict "title" .Title "tags" .Params.tags "categories" .Params.categories "contents" .Plain "permalink" .Permalink) -}}
+{{- end -}}
+{{- $result | jsonify -}}

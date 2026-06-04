@@ -1,0 +1,95 @@
+{{ define "main" }}
+<article class="post">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+
+  <div class="timeline">
+    {{ range hugo.Data.timeline }}
+    <div class="timeline-item">
+      <div class="timeline-date">{{ .date }}</div>
+      <div class="timeline-content">
+        <h3>{{ .title }}</h3>
+        <p>{{ .description }}</p>
+        {{ if .tags }}
+        <div class="timeline-tags">
+          {{ range .tags }}
+          <span class="tag">{{ . }}</span>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</article>
+
+<style>
+.timeline {
+  position: relative;
+  margin-top: 2rem;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.35rem;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+}
+
+.timeline-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.timeline-content {
+  background: var(--bg-secondary);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.timeline-content h3 {
+  margin: 0 0 0.5rem 0;
+}
+
+.timeline-content p {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-secondary);
+}
+
+.timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.timeline-tags .tag {
+  background: var(--bg);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+</style>
+{{ end }}

@@ -1,0 +1,71 @@
+[
+  {
+    "category": "开发工具",
+    "items": [
+      {
+        "name": "VS Code",
+        "icon": "💻",
+        "description": "代码编辑器",
+        "url": "https://code.visualstudio.com/"
+      },
+      {
+        "name": "Git",
+        "icon": "📦",
+        "description": "版本控制",
+        "url": "https://git-scm.com/"
+      },
+      {
+        "name": "Python",
+        "icon": "🐍",
+        "description": "编程语言",
+        "url": "https://www.python.org/"
+      }
+    ]
+  },
+  {
+    "category": "AI 工具",
+    "items": [
+      {
+        "name": "PyTorch",
+        "icon": "🔥",
+        "description": "深度学习框架",
+        "url": "https://pytorch.org/"
+      },
+      {
+        "name": "Hugging Face",
+        "icon": "🤗",
+        "description": "AI 模型平台",
+        "url": "https://huggingface.co/"
+      },
+      {
+        "name": "OpenAI",
+        "icon": "🤖",
+        "description": "AI API 服务",
+        "url": "https://openai.com/"
+      }
+    ]
+  },
+  {
+    "category": "效率工具",
+    "items": [
+      {
+        "name": "Notion",
+        "icon": "📝",
+        "description": "笔记与项目管理",
+        "url": "https://www.notion.so/"
+      },
+      {
+        "name": "Obsidian",
+        "icon": "💎",
+        "description": "本地知识库",
+        "url": "https://obsidian.md/"
+      },
+      {
+        "name": "Raycast",
+        "icon": "⚡",
+        "description": "启动器 (macOS)",
+        "url": "https://www.raycast.com/"
+      }
+    ]
+  }
+]

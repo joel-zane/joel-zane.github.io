@@ -1,0 +1,69 @@
+baseURL = "https://joel-zane.github.io/"
+locale = "zh-cn"
+title = "一期一会"
+theme = "archie"
+copyright = "© 2026 Joel Zane"
+
+[params]
+  mode = "auto"
+  useCDN = false
+  subtitle = "一个关于AI、技术与生活的个人博客"
+  mathjax = false
+  katex = false
+
+# Social Links
+[[params.social]]
+  name = "GitHub"
+  icon = "github"
+  url = "https://github.com/joel-zane"
+
+[[params.social]]
+  name = "Email"
+  icon = "mail"
+  url = "mailto:joel.zane@outlook.com"
+
+# Main Menu
+[[menu.main]]
+  name = "首页"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "博客"
+  url = "/posts/"
+  weight = 2
+
+[[menu.main]]
+  name = "项目"
+  url = "/projects/"
+  weight = 3
+
+[[menu.main]]
+  name = "画廊"
+  url = "/gallery/"
+  weight = 4
+
+[[menu.main]]
+  name = "时间线"
+  url = "/timeline/"
+  weight = 5
+
+[[menu.main]]
+  name = "工具"
+  url = "/tools/"
+  weight = 6
+
+[[menu.main]]
+  name = "关于"
+  url = "/about/"
+  weight = 7
+
+[pagination]
+  pagerSize = 10
+
+[outputs]
+  home = ["html", "rss", "json"]
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"

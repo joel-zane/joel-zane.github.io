@@ -1,0 +1,71 @@
+{{ define "main" }}
+<article class="post">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+
+  {{ range hugo.Data.tools }}
+  <div class="tools-category">
+    <h2>{{ .category }}</h2>
+    <div class="tools-grid">
+      {{ range .items }}
+      <div class="tool-card">
+        <div class="tool-icon">{{ .icon }}</div>
+        <div class="tool-info">
+          <h3><a href="{{ .url }}" target="_blank">{{ .name }}</a></h3>
+          <p>{{ .description }}</p>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</article>
+
+<style>
+.tools-category {
+  margin-top: 2rem;
+}
+
+.tools-category h2 {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.tool-card {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.tool-card:hover {
+  border-color: var(--accent);
+}
+
+.tool-icon {
+  font-size: 2rem;
+  min-width: 3rem;
+  text-align: center;
+}
+
+.tool-info h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+}
+
+.tool-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+</style>
+{{ end }}

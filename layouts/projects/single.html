@@ -1,0 +1,115 @@
+{{ define "main" }}
+<article class="post">
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+
+  <div class="projects-grid">
+    {{ range hugo.Data.projects }}
+    <div class="project-card">
+      <div class="project-image">
+        {{ if .image }}
+        <img src="{{ .image }}" alt="{{ .title }}">
+        {{ else }}
+        <div class="project-placeholder">📁</div>
+        {{ end }}
+      </div>
+      <div class="project-info">
+        <h3>{{ .title }}</h3>
+        <p>{{ .description }}</p>
+        <div class="project-tags">
+          {{ range .tags }}
+          <span class="tag">{{ . }}</span>
+          {{ end }}
+        </div>
+        <div class="project-links">
+          {{ if .github }}
+          <a href="{{ .github }}" target="_blank">GitHub</a>
+          {{ end }}
+          {{ if .demo }}
+          <a href="{{ .demo }}" target="_blank">Demo</a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</article>
+
+<style>
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.project-image {
+  height: 180px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 3rem;
+}
+
+.project-info {
+  padding: 1rem;
+}
+
+.project-info h3 {
+  margin: 0 0 0.5rem 0;
+}
+
+.project-info p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-tags .tag {
+  background: var(--bg-secondary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-links a {
+  font-size: 0.9rem;
+}
+</style>
+{{ end }}
