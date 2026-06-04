@@ -144,6 +144,13 @@ a:hover { color: var(--text); }
   border-bottom: 1px solid var(--border);
   font-size: 0.92rem;
 }
+.hero-left .post-list li::before {
+  content: '●';
+  color: var(--green);
+  font-size: 0.5em;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
 .hero-left .post-list li a {
   color: var(--text);
 }

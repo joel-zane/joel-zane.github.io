@@ -1,5 +1,4 @@
 {{ define "main" }}
-<!-- Hero Section -->
 <section class="hero">
     <div class="hero-left">
         <h1>你好，世界</h1>
@@ -22,8 +21,8 @@
 
         {{ if .Site.Params.busuanzi }}
         <div class="stats">
-            <span>总访问 <span id="busuanzi_value_site_pv">...</span> 次</span>
-            <span>访客 <span id="busuanzi_value_site_uv">...</span> 人</span>
+            <span id="busuanzi_container_site_pv">总访问 <span id="busuanzi_value_site_pv">...</span> 次</span>
+            <span id="busuanzi_container_site_uv">访客 <span id="busuanzi_value_site_uv">...</span> 人</span>
         </div>
         {{ end }}
     </div>
