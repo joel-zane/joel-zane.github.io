@@ -1,10 +1,49 @@
 {{ define "main" }}
-<article class="post-content">
-    <a href="{{ if .Parent }}{{ .Parent.RelPermalink }}{{ else }}/{{ end }}" class="back-link">← 返回</a>
-    <h1>{{ .Title }}</h1>
-    <time>{{ dateFormat "Jan 2, 2006" .Date }}</time>
-    <div class="body">
-        {{ .Content }}
+<main>
+  <article>
+    <div class="post-container">
+      <!-- Main Content -->
+      <div class="post-content">
+        <div class="title">
+          <h1 class="title">{{ .Title }}</h1>
+          <div class="meta">Posted on {{ dateFormat ":date_medium" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
+        </div>
+        {{ if isset .Params "tldr" }}
+        <div class="tldr">
+          <strong>tl;dr:</strong>
+          {{ .Params.tldr }}
+        </div>{{ end }}
+        <section class="body">
+          {{ .Content }}
+        </section>
+        <div class="post-tags">
+          {{ if ne .Type "page" }}
+          {{ if gt .Params.tags 0 }}
+          <nav class="nav tags">
+            <ul class="tags">
+              {{ range .Params.tags }}
+              <li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a></li>
+              {{ end }}
+            </ul>
+          </nav>
+          {{ end }}
+          {{ end }}
+        </div>
+      </div>
+
+      <!-- TOC -->
+      {{ if and (isset .Params "toc") (.Params.toc) }}
+      <div class="toc">
+        <strong>Table of contents:</strong>
+        {{ .TableOfContents }}
+      </div>
+      {{ end }}
     </div>
-</article>
+
+    <!-- Giscus Comments -->
+    {{ if not .Params.disable_comments }}
+    {{- partial "comments.html" . -}}
+    {{ end }}
+  </article>
+</main>
 {{ end }}
