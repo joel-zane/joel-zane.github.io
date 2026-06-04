@@ -16,11 +16,20 @@
     "featured": true
   },
   {
+    "name": "SSH 隧道管理器",
+    "description": "Windows SSH 隧道管理工具，带仪表盘 GUI、实时监控、自动重连和系统托盘",
+    "image": "/images/projects/ml.jpg",
+    "tags": ["Python", "SSH", "Windows", "GUI"],
+    "url": "https://github.com/joel-zane/ssh-tunnel-manager",
+    "download": "/downloads/ssh-tunnel-manager.zip",
+    "featured": true
+  },
+  {
     "name": "机器学习项目",
     "description": "深度学习与机器学习相关实验",
     "image": "/images/projects/ml.jpg",
     "tags": ["ML", "PyTorch", "Python"],
     "url": "https://github.com/joel-zane",
-    "featured": true
+    "featured": false
   }
 ]
