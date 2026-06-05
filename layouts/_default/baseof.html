@@ -41,6 +41,15 @@
                 <a href="/timeline/" {{ if eq .Section "timeline" }}class="active"{{ end }}>时间线</a>
                 <a href="/tools/" {{ if eq .Section "tools" }}class="active"{{ end }}>工具</a>
                 <a href="/about/" {{ if eq .Section "about" }}class="active"{{ end }}>关于</a>
+                <!-- 语言切换 -->
+                <span style="color:#333;margin:0 5px;">|</span>
+                {{ if .IsTranslated }}
+                    {{ range .Translations }}
+                        <a href="{{ .Permalink }}" style="font-size:0.85rem;">{{ .Language.Label }}</a>
+                    {{ end }}
+                {{ else }}
+                    <a href="/en/" style="font-size:0.85rem;">English</a>
+                {{ end }}
             </div>
         </nav>
 
