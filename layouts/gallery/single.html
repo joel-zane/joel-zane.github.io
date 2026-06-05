@@ -21,26 +21,28 @@
     {{ end }}
 </div>
 
-<!-- Lightbox Modal -->
-<div id="lightbox-overlay" onclick="closeLightbox(event)">
+<!-- Lightbox -->
+<div id="lb-overlay" onclick="closeLightbox(event)">
     <span class="lb-close" onclick="closeLightbox(event)">&times;</span>
     <span class="lb-prev" onclick="prevImage(event)">&#10094;</span>
     <span class="lb-next" onclick="nextImage(event)">&#10095;</span>
-    <div class="lb-body" onclick="event.stopPropagation()">
-        <div class="lb-imgwrap" onclick="toggleZoom(event)">
+    <div class="lb-body">
+        <div class="lb-imgwrap" id="lb-imgwrap">
             <img id="lb-img" src="" alt="">
         </div>
-        <p class="lb-hint" id="lb-hint">🔍 点击图片可放大/缩小</p>
+        <p class="lb-hint" id="lb-hint">🔍 滚轮缩放 · 拖动平移 · 点击还原</p>
         <div class="lb-caption">
             <h3 id="lb-title"></h3>
             <p id="lb-desc"></p>
             <p id="lb-date" class="lb-date"></p>
         </div>
+        <div class="lb-comments">
+            <div id="waline-gallery"></div>
+        </div>
     </div>
 </div>
 
 <style>
-/* Gallery Grid */
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;padding:20px 0}
 .gallery-card{background:var(--bg-card,#161616);border:1px solid var(--border,#222);border-radius:8px;overflow:hidden;cursor:pointer;transition:border-color .3s}
 .gallery-card:hover{border-color:#4ade80}
@@ -49,138 +51,161 @@
 .gallery-card .info h3{font-size:1.05rem;margin-bottom:4px}
 .gallery-card .info p{color:#888;font-size:.9rem}
 .gallery-card time{display:block;font-size:.8rem;color:#666;margin-top:6px}
-
-/* Lightbox Overlay */
-#lightbox-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:9999;overflow-y:auto;padding:40px 20px}
-#lightbox-overlay.active{display:block}
+#lb-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:9999;overflow-y:auto;padding:40px 20px}
+#lb-overlay.active{display:block}
 .lb-body{max-width:900px;width:100%;text-align:center;margin:0 auto}
-.lb-imgwrap{display:inline-block;cursor:zoom-in;max-width:100%;overflow:hidden}
-.lb-imgwrap.zoomed{cursor:zoom-out}
-.lb-imgwrap img{max-width:100%;max-height:70vh;object-fit:contain;border-radius:4px;transition:transform .3s ease}
-.lb-imgwrap.zoomed img{max-width:none;max-height:none}
+.lb-imgwrap{display:inline-block;cursor:grab;max-width:100%;overflow:hidden;position:relative}
+.lb-imgwrap img{max-width:100%;max-height:70vh;object-fit:contain;border-radius:4px;transition:none;transform-origin:0 0}
 .lb-hint{font-size:12px;color:#555;margin-top:8px}
 .lb-caption{color:#ccc;margin-top:15px}
 .lb-caption h3{color:#4ade80;font-size:20px;margin-bottom:5px}
 .lb-caption p{font-size:15px;color:#999}
 .lb-date{font-size:13px;color:#666;margin-top:4px}
-
-/* Lightbox Controls */
+.lb-comments{margin-top:30px;text-align:left;background:rgba(20,20,20,.9);border-radius:8px;padding:20px}
 .lb-close{position:fixed;top:20px;right:30px;color:#fff;font-size:40px;cursor:pointer;z-index:10001;transition:color .3s}
 .lb-close:hover{color:#4ade80}
 .lb-prev,.lb-next{position:fixed;top:50%;transform:translateY(-50%);color:#fff;font-size:36px;cursor:pointer;padding:20px;z-index:10001;user-select:none;transition:color .3s}
-.lb-prev{left:20px}
-.lb-next{right:20px}
+.lb-prev{left:20px}.lb-next{right:20px}
 .lb-prev:hover,.lb-next:hover{color:#4ade80}
 </style>
 
+<link rel="stylesheet" href="/css/waline.css">
 <script>
 var galleryData = {{ $gallery }};
 var currentIndex = 0;
-var isZoomed = false;
+var zoomScale = 1;
+var panX = 0, panY = 0;
+var dragging = false, dragStartX, dragStartY;
 
-function openLightbox(index) {
+window.openLightbox = function(index) {
     currentIndex = index;
-    isZoomed = false;
+    resetZoom();
     updateLightbox();
-    var overlay = document.getElementById('lightbox-overlay');
-    overlay.classList.add('active');
+    document.getElementById('lb-overlay').classList.add('active');
     document.body.style.overflow = 'hidden';
-}
+};
 
-function closeLightbox(e) {
-    var overlay = document.getElementById('lightbox-overlay');
+window.closeLightbox = function(e) {
+    var overlay = document.getElementById('lb-overlay');
     if (e.target === overlay || e.target.classList.contains('lb-close')) {
         overlay.classList.remove('active');
         document.body.style.overflow = '';
-        isZoomed = false;
+        resetZoom();
     }
+};
+
+window.prevImage = function(e) {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length;
+    resetZoom();
+    updateLightbox();
+};
+
+window.nextImage = function(e) {
+    e.stopPropagation();
+    currentIndex = (currentIndex + 1) % galleryData.length;
+    resetZoom();
+    updateLightbox();
+};
+
+function resetZoom() {
+    zoomScale = 1;
+    panX = 0;
+    panY = 0;
+    applyTransform();
+}
+
+function applyTransform() {
+    var img = document.getElementById('lb-img');
+    img.style.transform = 'translate(' + panX + 'px,' + panY + 'px) scale(' + zoomScale + ')';
+    document.getElementById('lb-hint').textContent = zoomScale > 1
+        ? '🔍 缩放 ' + Math.round(zoomScale * 100) + '% · 拖动平移 · 滚轮缩放'
+        : '🔍 滚轮缩放 · 拖动平移 · 点击还原';
 }
 
 function updateLightbox() {
     var item = galleryData[currentIndex];
-    var img = document.getElementById('lb-img');
-    img.src = item.image;
-    img.style.transform = 'scale(1)';
-    img.style.maxWidth = '100%';
-    img.style.maxHeight = '70vh';
+    document.getElementById('lb-img').src = item.image;
     document.getElementById('lb-title').textContent = item.title;
     document.getElementById('lb-desc').textContent = item.description || '';
     document.getElementById('lb-date').textContent = item.date ? '📅 ' + item.date : '';
-    isZoomed = false;
-    var wrap = document.querySelector('.lb-imgwrap');
-    wrap.classList.remove('zoomed');
-    document.getElementById('lb-hint').textContent = '🔍 点击图片可放大/缩小';
-}
 
-function toggleZoom(e) {
-    e.stopPropagation();
-    var wrap = document.querySelector('.lb-imgwrap');
-    var img = document.getElementById('lb-img');
-    isZoomed = !isZoomed;
-    if (isZoomed) {
-        wrap.classList.add('zoomed');
-        img.style.maxWidth = 'none';
-        img.style.maxHeight = 'none';
-        img.style.cursor = 'grab';
-        document.getElementById('lb-hint').textContent = '🔍 再次点击还原';
-        enableDrag(img);
-    } else {
-        wrap.classList.remove('zoomed');
-        img.style.maxWidth = '100%';
-        img.style.maxHeight = '70vh';
-        img.style.transform = 'scale(1)';
-        img.style.cursor = 'zoom-in';
-        document.getElementById('lb-hint').textContent = '🔍 点击图片可放大/缩小';
-        disableDrag(img);
+    // Waline comments (loaded dynamically)
+    var walineEl = document.getElementById('waline-gallery');
+    walineEl.innerHTML = '';
+    if (window.__waline_init) {
+        window.__waline_init({
+            el: '#waline-gallery',
+            serverURL: '/api/waline',
+            path: '/gallery/' + item.image.split('/').pop().replace('.jpg', ''),
+            dark: true,
+            lang: '{{ .Lang }}',
+            meta: ['nick', 'mail'],
+            requiredMeta: [],
+            login: 'disable',
+            pageview: false,
+            comment: true,
+        });
     }
 }
 
-function enableDrag(el) {
-    var dragging = false, sx, sy, ox = 0, oy = 0;
-    el.onmousedown = function(ev) {
-        if (!isZoomed) return;
-        dragging = true;
-        sx = ev.clientX - ox;
-        sy = ev.clientY - oy;
-        el.style.cursor = 'grabbing';
-        ev.preventDefault();
-    };
-    document.onmousemove = function(ev) {
-        if (!dragging) return;
-        ox = ev.clientX - sx;
-        oy = ev.clientY - sy;
-        el.style.transform = 'translate(' + ox + 'px,' + oy + 'px) scale(2)';
-    };
-    document.onmouseup = function() {
-        dragging = false;
-        if (isZoomed) el.style.cursor = 'grab';
-    };
-}
+// Mouse wheel zoom
+document.getElementById('lb-imgwrap').addEventListener('wheel', function(e) {
+    e.preventDefault();
+    var delta = e.deltaY > 0 ? -0.15 : 0.15;
+    zoomScale = Math.max(0.5, Math.min(10, zoomScale + delta));
+    applyTransform();
+}, { passive: false });
 
-function disableDrag(el) {
-    el.onmousedown = null;
-    el.style.transform = 'scale(1)';
-}
-
-function prevImage(e) {
-    e.stopPropagation();
-    currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length;
-    updateLightbox();
-}
-
-function nextImage(e) {
-    e.stopPropagation();
-    currentIndex = (currentIndex + 1) % galleryData.length;
-    updateLightbox();
-}
-
-document.addEventListener('keydown', function(e) {
-    var overlay = document.getElementById('lightbox-overlay');
-    if (!overlay.classList.contains('active')) return;
-    if (e.key === 'Escape') { overlay.classList.remove('active'); document.body.style.overflow = ''; isZoomed = false; }
-    if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length; updateLightbox(); }
-    if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % galleryData.length; updateLightbox(); }
+// Mouse drag pan
+document.getElementById('lb-imgwrap').addEventListener('mousedown', function(e) {
+    if (zoomScale <= 1) return;
+    dragging = true;
+    dragStartX = e.clientX - panX;
+    dragStartY = e.clientY - panY;
+    document.getElementById('lb-imgwrap').style.cursor = 'grabbing';
+    e.preventDefault();
 });
+
+document.addEventListener('mousemove', function(e) {
+    if (!dragging) return;
+    panX = e.clientX - dragStartX;
+    panY = e.clientY - dragStartY;
+    applyTransform();
+});
+
+document.addEventListener('mouseup', function() {
+    if (dragging) {
+        dragging = false;
+        document.getElementById('lb-imgwrap').style.cursor = zoomScale > 1 ? 'grab' : 'zoom-in';
+    }
+});
+
+// Double click to reset
+document.getElementById('lb-imgwrap').addEventListener('dblclick', function(e) {
+    e.preventDefault();
+    if (zoomScale !== 1 || panX !== 0 || panY !== 0) {
+        resetZoom();
+    } else {
+        zoomScale = 2;
+        applyTransform();
+    }
+});
+
+// Keyboard
+document.addEventListener('keydown', function(e) {
+    var overlay = document.getElementById('lb-overlay');
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') { overlay.classList.remove('active'); document.body.style.overflow = ''; resetZoom(); }
+    if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length; resetZoom(); updateLightbox(); }
+    if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % galleryData.length; resetZoom(); updateLightbox(); }
+});
+</script>
+
+<!-- Waline v3 ES Module -->
+<script type="module">
+import { init } from '/js/waline.js';
+window.__waline_init = init;
 </script>
 {{ else }}
 {{ .Content }}
