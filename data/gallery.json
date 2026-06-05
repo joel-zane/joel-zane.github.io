@@ -1,41 +1,5 @@
 [
   {
-    "title": "东京塔",
-    "description": "日本东京的标志性建筑",
-    "image": "/images/gallery/tokyo-tower.jpg",
-    "date": "2025-12-15"
-  },
-  {
-    "title": "樱花",
-    "description": "春天的樱花盛开",
-    "image": "/images/gallery/sakura.jpg",
-    "date": "2025-04-01"
-  },
-  {
-    "title": "代码",
-    "description": "深夜写代码",
-    "image": "/images/gallery/coding.jpg",
-    "date": "2026-03-20"
-  },
-  {
-    "title": "猫",
-    "description": "我家的猫",
-    "image": "/images/gallery/cat.jpg",
-    "date": "2026-01-10"
-  },
-  {
-    "title": "咖啡",
-    "description": "一杯咖啡",
-    "image": "/images/gallery/coffee.jpg",
-    "date": "2026-02-14"
-  },
-  {
-    "title": "日落",
-    "description": "美丽的日落",
-    "image": "/images/gallery/sunset.jpg",
-    "date": "2026-04-05"
-  },
-  {
     "title": "Anthony Edwards 跳投",
     "description": "NBA赛场上的精彩瞬间",
     "image": "/images/gallery/img_7ee6fbad2bf2.jpg",
