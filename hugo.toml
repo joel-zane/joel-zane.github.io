@@ -83,37 +83,37 @@ copyright = "© 2026 Joel Zane"
 # 英文菜单
 [[languages.en.menu.main]]
   name = "Home"
-  url = "/"
+  url = "/en/"
   weight = 1
 
 [[languages.en.menu.main]]
   name = "Blog"
-  url = "/posts/"
+  url = "/en/posts/"
   weight = 2
 
 [[languages.en.menu.main]]
   name = "Projects"
-  url = "/projects/"
+  url = "/en/projects/"
   weight = 3
 
 [[languages.en.menu.main]]
   name = "Gallery"
-  url = "/gallery/"
+  url = "/en/gallery/"
   weight = 4
 
 [[languages.en.menu.main]]
   name = "Timeline"
-  url = "/timeline/"
+  url = "/en/timeline/"
   weight = 5
 
 [[languages.en.menu.main]]
   name = "Tools"
-  url = "/tools/"
+  url = "/en/tools/"
   weight = 6
 
 [[languages.en.menu.main]]
   name = "About"
-  url = "/about/"
+  url = "/en/about/"
   weight = 7
 
 [pagination]

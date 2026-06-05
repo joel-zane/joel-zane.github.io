@@ -126,3 +126,9 @@
 
 [learningAI]
   other = "学习与探索 AI、设计、开发等领域"
+
+[visit]
+  other = "访问 →"
+
+[tableOfContents]
+  other = "目录"

@@ -5,6 +5,8 @@
 </div>
 
 {{ $gallery := .Site.Data.gallery }}
+{{ if eq .Lang "en" }}{{ with .Site.Data.gallery_en }}{{ $gallery = . }}{{ end }}{{ end }}
+
 {{ if $gallery }}
 <div class="gallery-grid">
     {{ range $gallery }}

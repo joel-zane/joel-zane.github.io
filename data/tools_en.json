@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Hugo",
+    "description": "Static site generator, used to build this blog",
+    "url": "https://gohugo.io/",
+    "category": "Development"
+  },
+  {
+    "name": "Git",
+    "description": "Version control tool",
+    "url": "https://git-scm.com/",
+    "category": "Development"
+  },
+  {
+    "name": "Python",
+    "description": "Primary language for AI/ML and automation scripts",
+    "url": "https://www.python.org/",
+    "category": "Development"
+  },
+  {
+    "name": "VS Code",
+    "description": "Code editor",
+    "url": "https://code.visualstudio.com/",
+    "category": "Development"
+  },
+  {
+    "name": "Linux",
+    "description": "Server OS, Oracle Cloud ARM64",
+    "url": "https://ubuntu.com/",
+    "category": "DevOps"
+  },
+  {
+    "name": "Docker",
+    "description": "Container deployment tool",
+    "url": "https://www.docker.com/",
+    "category": "DevOps"
+  },
+  {
+    "name": "Oracle Cloud",
+    "description": "Cloud server hosting personal projects",
+    "url": "https://www.oracle.com/cloud/",
+    "category": "DevOps"
+  },
+  {
+    "name": "1Panel",
+    "description": "Server management panel",
+    "url": "https://1panel.cn/",
+    "category": "DevOps"
+  },
+  {
+    "name": "Obsidian",
+    "description": "Knowledge management and note-taking",
+    "url": "https://obsidian.md/",
+    "category": "Productivity"
+  },
+  {
+    "name": "Figma",
+    "description": "UI/UX design tool",
+    "url": "https://www.figma.com/",
+    "category": "Productivity"
+  },
+  {
+    "name": "Notion",
+    "description": "Project management and collaboration",
+    "url": "https://www.notion.so/",
+    "category": "Productivity"
+  },
+  {
+    "name": "Hermes Agent",
+    "description": "AI assistant for daily automation",
+    "url": "https://github.com/joel-zane",
+    "category": "AI"
+  },
+  {
+    "name": "Hugging Face",
+    "description": "AI models and datasets platform",
+    "url": "https://huggingface.co/",
+    "category": "AI"
+  },
+  {
+    "name": "PyTorch",
+    "description": "Deep learning framework",
+    "url": "https://pytorch.org/",
+    "category": "AI"
+  },
+  {
+    "name": "GitHub",
+    "description": "Code hosting platform",
+    "url": "https://github.com/joel-zane",
+    "category": "Development"
+  },
+  {
+    "name": "AniList",
+    "description": "Anime tracking and watchlist",
+    "url": "https://anilist.co/",
+    "category": "Entertainment"
+  }
+]

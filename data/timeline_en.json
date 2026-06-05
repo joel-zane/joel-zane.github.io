@@ -1,0 +1,38 @@
+[
+  {
+    "date": "2026-06-04",
+    "title": "Building Personal Blog",
+    "description": "Built personal website with Hugo + Archie theme, deployed to GitHub Pages",
+    "tags": ["Hugo", "Blog"]
+  },
+  {
+    "date": "2026-05-15",
+    "title": "Setting Up AI Assistant",
+    "description": "Configured Hermes Agent for automated tasks and intelligent Q&A",
+    "tags": ["AI", "Automation"]
+  },
+  {
+    "date": "2026-04-20",
+    "title": "Started Deep Learning",
+    "description": "Learning PyTorch framework, starting ML project practice",
+    "tags": ["AI", "Learning"]
+  },
+  {
+    "date": "2026-03-01",
+    "title": "Learning Python",
+    "description": "Systematic Python learning, mastering basics and common libraries",
+    "tags": ["Programming", "Python"]
+  },
+  {
+    "date": "2025-12-15",
+    "title": "Japan Trip",
+    "description": "Traveled to Japan, visited Tokyo, Kyoto and more",
+    "tags": ["Travel", "Japan"]
+  },
+  {
+    "date": "2025-09-01",
+    "title": "Started University",
+    "description": "Entered a 211 university in Beijing for a new chapter",
+    "tags": ["Study", "Life"]
+  }
+]

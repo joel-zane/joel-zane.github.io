@@ -126,3 +126,9 @@
 
 [learningAI]
   other = "Learning and exploring AI, design, development"
+
+[visit]
+  other = "Visit →"
+
+[tableOfContents]
+  other = "Table of Contents"

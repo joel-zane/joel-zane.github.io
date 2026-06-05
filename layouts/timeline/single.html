@@ -5,6 +5,8 @@
 </div>
 
 {{ $timeline := .Site.Data.timeline }}
+{{ if eq .Lang "en" }}{{ with .Site.Data.timeline_en }}{{ $timeline = . }}{{ end }}{{ end }}
+
 {{ if $timeline }}
 <div class="timeline">
     {{ range $timeline }}

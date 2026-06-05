@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Tokyo Tower",
+    "description": "Iconic landmark of Tokyo, Japan",
+    "image": "/images/gallery/tokyo-tower.jpg",
+    "date": "2025-12-15"
+  },
+  {
+    "title": "Cherry Blossoms",
+    "description": "Spring cherry blossoms in full bloom",
+    "image": "/images/gallery/sakura.jpg",
+    "date": "2025-04-01"
+  },
+  {
+    "title": "Coding",
+    "description": "Late night coding session",
+    "image": "/images/gallery/coding.jpg",
+    "date": "2026-03-20"
+  },
+  {
+    "title": "Basketball",
+    "description": "NBA game highlights",
+    "image": "/images/gallery/basketball.jpg",
+    "date": "2026-01-10"
+  },
+  {
+    "title": "Anime",
+    "description": "Favorite anime screenshots",
+    "image": "/images/gallery/anime.jpg",
+    "date": "2025-08-05"
+  },
+  {
+    "title": "Campus",
+    "description": "Beautiful campus scenery",
+    "image": "/images/gallery/campus.jpg",
+    "date": "2026-05-01"
+  }
+]

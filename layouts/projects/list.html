@@ -19,8 +19,8 @@
         </div>
         <div style="margin-top:8px;display:flex;gap:12px;">
             {{ if .Params.github }}<a href="{{ .Params.github }}" target="_blank" style="font-size:0.85rem;color:#4ade80;">GitHub →</a>{{ end }}
-            {{ if .Params.download }}<a href="{{ .Params.download }}" style="font-size:0.85rem;color:#4ade80;">⬇ 下载</a>{{ end }}
-            {{ if .Params.demo }}<a href="{{ .Params.demo }}" target="_blank" style="font-size:0.85rem;color:#4ade80;">在线演示 →</a>{{ end }}
+            {{ if .Params.download }}<a href="{{ .Params.download }}" style="font-size:0.85rem;color:#4ade80;">{{ i18n "download" }}</a>{{ end }}
+            {{ if .Params.demo }}<a href="{{ .Params.demo }}" target="_blank" style="font-size:0.85rem;color:#4ade80;">{{ i18n "demo" }}</a>{{ end }}
         </div>
     </div>
 </div>

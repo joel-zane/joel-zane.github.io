@@ -39,10 +39,10 @@
                 {{ end }}
                 <!-- 语言切换按钮 -->
                 {{ if eq .Lang "zh" }}
-                    <a href="{{ if .IsTranslated }}{{ range .Translations }}{{ .Permalink }}{{ end }}{{ else }}/en/{{ end }}" 
+                    <a href="{{ if .IsTranslated }}{{ range .Translations }}{{ .RelPermalink }}{{ end }}{{ else }}/en/{{ end }}" 
                        class="lang-switch" title="Switch to English">EN</a>
                 {{ else }}
-                    <a href="{{ if .IsTranslated }}{{ range .Translations }}{{ .Permalink }}{{ end }}{{ else }}/{{ end }}" 
+                    <a href="{{ if .IsTranslated }}{{ range .Translations }}{{ .RelPermalink }}{{ end }}{{ else }}/{{ end }}" 
                        class="lang-switch" title="切换到中文">中</a>
                 {{ end }}
             </div>

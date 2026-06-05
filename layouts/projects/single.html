@@ -1,6 +1,6 @@
 {{ define "main" }}
 <article class="post-content">
-    <a href="/projects/" class="back-link">← 返回项目列表</a>
+    <a href="{{ if eq .Lang "en" }}/en/projects/{{ else }}/projects/{{ end }}" class="back-link">{{ i18n "backToList" }}</a>
     {{ if .Params.image }}
     <img src="{{ .Params.image }}" alt="{{ .Title }}" style="width:100%;max-height:300px;object-fit:cover;border-radius:8px;margin-bottom:20px;">
     {{ end }}
@@ -11,8 +11,8 @@
     </div>
     <div style="margin-top:12px;display:flex;gap:16px;">
         {{ if .Params.github }}<a href="{{ .Params.github }}" target="_blank" style="color:#4ade80;">GitHub →</a>{{ end }}
-        {{ if .Params.download }}<a href="{{ .Params.download }}" style="color:#4ade80;">⬇ 下载 ZIP</a>{{ end }}
-        {{ if .Params.demo }}<a href="{{ .Params.demo }}" target="_blank" style="color:#4ade80;">在线演示 →</a>{{ end }}
+        {{ if .Params.download }}<a href="{{ .Params.download }}" style="color:#4ade80;">{{ i18n "download" }}</a>{{ end }}
+        {{ if .Params.demo }}<a href="{{ .Params.demo }}" target="_blank" style="color:#4ade80;">{{ i18n "demo" }}</a>{{ end }}
     </div>
     <div class="body">
         {{ .Content }}
