@@ -15,6 +15,7 @@
         <div class="info">
             <h3>{{ $item.title }}</h3>
             {{ if $item.description }}<p>{{ $item.description }}</p>{{ end }}
+            {{ if $item.date }}<time>{{ $item.date }}</time>{{ end }}
         </div>
     </div>
     {{ end }}
@@ -30,6 +31,7 @@
         <div class="lightbox-caption">
             <h3 id="lightbox-title"></h3>
             <p id="lightbox-desc"></p>
+            <p id="lightbox-date" class="lightbox-date"></p>
         </div>
         <div id="lightbox-comments" class="lightbox-comments">
             <div id="waline-gallery"></div>
@@ -113,6 +115,17 @@
 .lightbox-prev { left: 20px; }
 .lightbox-next { right: 20px; }
 .lightbox-prev:hover, .lightbox-next:hover { color: #4ade80; }
+.gallery-card time {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 4px;
+}
+.lightbox-date {
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+}
 .gallery-card { cursor: pointer; }
 </style>
 
@@ -143,6 +156,7 @@ function updateLightbox() {
     document.getElementById('lightbox-img').src = item.image;
     document.getElementById('lightbox-title').textContent = item.title;
     document.getElementById('lightbox-desc').textContent = item.description || '';
+    document.getElementById('lightbox-date').textContent = item.date ? '📅 ' + item.date : '';
 
     // Update Waline comments for this image
     const walineEl = document.getElementById('waline-gallery');
