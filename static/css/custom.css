@@ -93,6 +93,28 @@ a:hover { color: var(--text); }
   background: var(--green);
 }
 
+/* 语言切换按钮 */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--green);
+  background: transparent;
+  transition: all 0.2s;
+  margin-left: 8px;
+}
+.lang-switch:hover {
+  background: var(--green);
+  color: var(--bg);
+  border-color: var(--green);
+}
+
 /* ===== Hero Section ===== */
 .hero {
   display: grid;

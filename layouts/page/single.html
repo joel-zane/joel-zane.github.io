@@ -26,18 +26,13 @@
                 {{ range .Site.Menus.main }}
                     <a href="{{ .URL }}" {{ if $.IsMenuCurrent "main" . }}class="active"{{ end }}>{{ .Name }}</a>
                 {{ end }}
-                <!-- 语言切换 -->
-                <span style="color:#333;margin:0 5px;">|</span>
-                {{ if .IsTranslated }}
-                    {{ range .Translations }}
-                        <a href="{{ .Permalink }}" style="font-size:0.85rem;">{{ .Language.Label }}</a>
-                    {{ end }}
+                <!-- 语言切换按钮 -->
+                {{ if eq .Lang "zh" }}
+                    <a href="{{ if .IsTranslated }}{{ range .Translations }}{{ .Permalink }}{{ end }}{{ else }}/en/about/{{ end }}" 
+                       class="lang-switch" title="Switch to English">EN</a>
                 {{ else }}
-                    {{ if eq .Lang "zh" }}
-                        <a href="/en/about/" style="font-size:0.85rem;">English</a>
-                    {{ else }}
-                        <a href="/about/" style="font-size:0.85rem;">中文</a>
-                    {{ end }}
+                    <a href="{{ if .IsTranslated }}{{ range .Translations }}{{ .Permalink }}{{ end }}{{ else }}/about/{{ end }}" 
+                       class="lang-switch" title="切换到中文">中</a>
                 {{ end }}
             </div>
         </nav>
