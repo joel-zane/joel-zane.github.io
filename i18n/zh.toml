@@ -1,0 +1,128 @@
+[latestPosts]
+  other = "最新文章"
+
+[featuredProjects]
+  other = "精选项目"
+
+[quickNav]
+  other = "快速导航"
+
+[viewAll]
+  other = "查看全部文章 →"
+
+[viewAllProjects]
+  other = "查看全部项目 →"
+
+[totalVisits]
+  other = "总访问"
+
+[visitors]
+  other = "访客"
+
+[times]
+  other = "次"
+
+[people]
+  other = "人"
+
+[comments]
+  other = "评论"
+
+[search]
+  other = "搜索"
+
+[searchPlaceholder]
+  other = "输入关键词..."
+
+[noResults]
+  other = "没有找到相关结果"
+
+[backToTop]
+  other = "↑"
+
+[sharePost]
+  other = "分享这篇文章"
+
+[wechat]
+  other = "📱 微信"
+
+[weibo]
+  other = "🐦 微博"
+
+[twitter]
+  other = "🐦 Twitter"
+
+[copyLink]
+  other = "🔗 复制链接"
+
+[prevPost]
+  other = "← 上一篇"
+
+[nextPost]
+  other = "下一篇 →"
+
+[backToList]
+  other = "← 返回项目列表"
+
+[github]
+  other = "GitHub →"
+
+[download]
+  other = "⬇ 下载 ZIP"
+
+[demo]
+  other = "在线演示 →"
+
+[postedOn]
+  other = "Posted on"
+
+[keepLearning]
+  other = "// Keep learning. Keep creating."
+
+[lifeJs]
+  other = "// life.js"
+
+[basketball]
+  other = "篮球"
+
+[movies]
+  other = "电影"
+
+[anime]
+  other = "动漫"
+
+[literature]
+  other = "文学"
+
+[music]
+  other = "音乐"
+
+[interests]
+  other = "兴趣"
+
+[contactMe]
+  other = "联系我"
+
+[whatImDoing]
+  other = "正在做的事"
+
+[techStack]
+  other = "技术栈"
+
+[timeline]
+  other = "时间线"
+
+[timelineDesc]
+  other = "记录我的成长轨迹"
+
+[enterTimeline]
+  other = "进入时间线 →"
+
+[buildingBlog]
+  other = "构建个人博客"
+
+[creatingHermes]
+  other = "打造 Hermes AI 助手"
+
+[learningAI]
+  other = "学习与探索 AI、设计、开发等领域"

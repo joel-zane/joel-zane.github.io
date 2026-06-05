@@ -1,5 +1,5 @@
 <div id="giscus-comments" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #333;">
-  <h3 style="margin-bottom: 1rem;">💬 评论</h3>
+  <h3 style="margin-bottom: 1rem;">💬 {{ i18n "comments" }}</h3>
   <script src="https://giscus.app/client.js"
     data-repo="joel-zane/joel-zane.github.io"
     data-repo-id="R_kgDOPDxbXg"
@@ -11,7 +11,7 @@
     data-emit-metadata="0"
     data-input-position="top"
     data-theme="dark"
-    data-lang="zh-CN"
+    data-lang="{{ .Lang }}"
     data-loading="lazy"
     crossorigin="anonymous"
     async>

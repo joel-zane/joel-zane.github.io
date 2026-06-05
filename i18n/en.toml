@@ -1,0 +1,128 @@
+[latestPosts]
+  other = "Latest Posts"
+
+[featuredProjects]
+  other = "Featured Projects"
+
+[quickNav]
+  other = "Quick Navigation"
+
+[viewAll]
+  other = "View all posts →"
+
+[viewAllProjects]
+  other = "View all projects →"
+
+[totalVisits]
+  other = "Total visits"
+
+[visitors]
+  other = "Visitors"
+
+[times]
+  other = ""
+
+[people]
+  other = ""
+
+[comments]
+  other = "Comments"
+
+[search]
+  other = "Search"
+
+[searchPlaceholder]
+  other = "Search keywords..."
+
+[noResults]
+  other = "No results found"
+
+[backToTop]
+  other = "↑"
+
+[sharePost]
+  other = "Share this post"
+
+[wechat]
+  other = "📱 WeChat"
+
+[weibo]
+  other = "🐦 Weibo"
+
+[twitter]
+  other = "🐦 Twitter"
+
+[copyLink]
+  other = "🔗 Copy link"
+
+[prevPost]
+  other = "← Previous"
+
+[nextPost]
+  other = "Next →"
+
+[backToList]
+  other = "← Back to projects"
+
+[github]
+  other = "GitHub →"
+
+[download]
+  other = "⬇ Download ZIP"
+
+[demo]
+  other = "Live Demo →"
+
+[postedOn]
+  other = "Posted on"
+
+[keepLearning]
+  other = "// Keep learning. Keep creating."
+
+[lifeJs]
+  other = "// life.js"
+
+[basketball]
+  other = "Basketball"
+
+[movies]
+  other = "Movies"
+
+[anime]
+  other = "Anime"
+
+[literature]
+  other = "Literature"
+
+[music]
+  other = "Music"
+
+[interests]
+  other = "Interests"
+
+[contactMe]
+  other = "Contact Me"
+
+[whatImDoing]
+  other = "What I'm Doing"
+
+[techStack]
+  other = "Tech Stack"
+
+[timeline]
+  other = "Timeline"
+
+[timelineDesc]
+  other = "Record my growth trajectory"
+
+[enterTimeline]
+  other = "Enter Timeline →"
+
+[buildingBlog]
+  other = "Building personal blog"
+
+[creatingHermes]
+  other = "Creating Hermes AI Assistant"
+
+[learningAI]
+  other = "Learning and exploring AI, design, development"
