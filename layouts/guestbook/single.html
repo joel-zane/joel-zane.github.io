@@ -4,5 +4,40 @@
     <p>{{ if eq .Lang "en" }}Leave a message, share your thoughts!{{ else }}留下你的足迹，说点什么吧！{{ end }}</p>
 </div>
 
-{{- partial "comments.html" . -}}
+<div id="waline"></div>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+<script type="module">
+  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+  init({
+    el: '#waline',
+    serverURL: '/api/waline',
+    lang: '{{ if eq .Lang "en" }}en{{ else }}zh-CN{{ end }}',
+    dark: 'html:not([data-theme="light"])',
+    meta: ['nick', 'mail'],
+    requiredMeta: ['nick'],
+    login: 'disable',
+    wordLimit: 500,
+    pageview: false,
+    comment: false,
+  });
+</script>
+
+<style>
+#waline {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+}
+/* Waline dark mode variables */
+:root {
+  --waline-theme-color: #4ade80;
+  --waline-active-color: #22c55e;
+}
+[data-theme="light"] {
+  --waline-bg-color: #f5f5f5;
+  --waline-bg-color-light: #ffffff;
+  --waline-text-color: #1a1a1a;
+  --waline-border-color: #e0e0e0;
+}
+</style>
 {{ end }}
