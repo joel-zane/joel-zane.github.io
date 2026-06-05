@@ -1,6 +1,14 @@
-{{- $pages := .Site.RegularPages -}}
-{{- $result := slice -}}
-{{- range $pages -}}
-  {{- $result = $result | append (dict "title" .Title "tags" .Params.tags "categories" .Params.categories "contents" .Plain "permalink" .Permalink) -}}
+{{- $pages := where .Site.RegularPages "Type" "!=" "page" -}}
+{{- $pages = $pages | first 50 -}}
+[
+{{- range $index, $page := $pages -}}
+  {{- if $index -}},{{- end -}}
+  {
+    "title": {{ $page.Title | jsonify }},
+    "permalink": {{ $page.Permalink | jsonify }},
+    "content": {{ $page.Plain | truncate 200 | jsonify }},
+    "tags": {{ $page.Params.tags | jsonify }},
+    "date": {{ $page.Date.Format "2006-01-02" | jsonify }}
+  }
 {{- end -}}
-{{- $result | jsonify -}}
+]

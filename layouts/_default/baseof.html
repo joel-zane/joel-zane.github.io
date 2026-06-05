@@ -4,10 +4,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+    
+    <!-- SEO -->
+    {{- partial "seo.html" . -}}
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Long+Cang&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="/css/custom.css">
+    
+    <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="/index.xml">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#4ade80">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="一期一会">
+    <link rel="apple-touch-icon" href="/images/icon-192.png">
 </head>
 <body>
     <div class="container">
@@ -41,6 +61,14 @@
             <div>© 2026 Joel Zane. All rights reserved.</div>
         </footer>
     </div>
+    
+    <!-- UI Enhancements -->
+    {{- partial "ui-enhancements.html" . -}}
+    
+    <!-- Search -->
+    {{- partial "search.html" . -}}
+    
+    <!-- Busuanzi Counter -->
     {{ if .Site.Params.busuanzi }}
     <script>
     (function(){
@@ -71,5 +99,14 @@
     })();
     </script>
     {{ end }}
+    
+    <!-- Service Worker Registration -->
+    <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('SW registered:', reg.scope))
+        .catch(err => console.log('SW registration failed:', err));
+    }
+    </script>
 </body>
 </html>

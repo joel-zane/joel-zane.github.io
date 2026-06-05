@@ -1,5 +1,6 @@
 baseURL = "https://joel-zane.github.io/"
 locale = "zh-cn"
+defaultContentLanguage = "zh"
 title = "一期一会"
 theme = "archie"
 copyright = "© 2026 Joel Zane"
@@ -11,10 +12,14 @@ copyright = "© 2026 Joel Zane"
   mode = "auto"
   useCDN = false
   subtitle = "一个关于AI、技术与生活的个人博客"
+  description = "Joel Zane 的个人博客，记录 AI、技术与生活的点滴。"
+  author = "Joel Zane"
   mathjax = false
   katex = false
   # 不蒜子访问统计
   busuanzi = true
+  # PWA
+  enablePWA = true
 
 # Social Links
 [[params.social]]
@@ -72,3 +77,89 @@ copyright = "© 2026 Joel Zane"
 [taxonomies]
   tag = "tags"
   category = "categories"
+
+# 多语言支持
+[languages]
+  [languages.zh]
+    title = "一期一会"
+    label = "中文"
+    weight = 1
+    [languages.zh.params]
+      subtitle = "一个关于AI、技术与生活的个人博客"
+  [languages.en]
+    title = "Yi Qi Yi Hui"
+    label = "English"
+    weight = 2
+    [languages.en.params]
+      subtitle = "A personal blog about AI, tech and life"
+
+# 菜单（多语言）
+[[languages.zh.menu.main]]
+  name = "首页"
+  url = "/"
+  weight = 1
+
+[[languages.zh.menu.main]]
+  name = "博客"
+  url = "/posts/"
+  weight = 2
+
+[[languages.zh.menu.main]]
+  name = "项目"
+  url = "/projects/"
+  weight = 3
+
+[[languages.zh.menu.main]]
+  name = "画廊"
+  url = "/gallery/"
+  weight = 4
+
+[[languages.zh.menu.main]]
+  name = "时间线"
+  url = "/timeline/"
+  weight = 5
+
+[[languages.zh.menu.main]]
+  name = "工具"
+  url = "/tools/"
+  weight = 6
+
+[[languages.zh.menu.main]]
+  name = "关于"
+  url = "/about/"
+  weight = 7
+
+[[languages.en.menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 1
+
+[[languages.en.menu.main]]
+  name = "Blog"
+  url = "/posts/"
+  weight = 2
+
+[[languages.en.menu.main]]
+  name = "Projects"
+  url = "/projects/"
+  weight = 3
+
+[[languages.en.menu.main]]
+  name = "Gallery"
+  url = "/gallery/"
+  weight = 4
+
+[[languages.en.menu.main]]
+  name = "Timeline"
+  url = "/timeline/"
+  weight = 5
+
+[[languages.en.menu.main]]
+  name = "Tools"
+  url = "/tools/"
+  weight = 6
+
+[[languages.en.menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 7

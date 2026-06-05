@@ -40,10 +40,19 @@
       {{ end }}
     </div>
 
+    <!-- Post Navigation -->
+    {{- partial "post-nav.html" . -}}
+    
+    <!-- Share Buttons -->
+    {{- partial "share.html" . -}}
+    
     <!-- Giscus Comments -->
     {{ if not .Params.disable_comments }}
     {{- partial "comments.html" . -}}
     {{ end }}
   </article>
 </main>
+
+<!-- Floating TOC -->
+{{- partial "toc.html" . -}}
 {{ end }}

@@ -1,0 +1,92 @@
+<!-- 搜索功能 -->
+<div id="search-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:2000;overflow-y:auto;">
+    <div style="max-width:600px;margin:50px auto;padding:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+            <h2 style="color:#4ade80;font-size:1.5rem;">搜索</h2>
+            <button onclick="closeSearch()" style="background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;">✕</button>
+        </div>
+        
+        <input type="text" id="search-input" placeholder="输入关键词..." 
+            style="width:100%;padding:15px;background:#161616;border:1px solid #222;border-radius:8px;color:white;font-size:1rem;margin-bottom:20px;"
+            oninput="performSearch(this.value)">
+        
+        <div id="search-results"></div>
+    </div>
+</div>
+
+<!-- 搜索按钮 -->
+<button onclick="openSearch()" 
+    style="position:fixed;bottom:30px;right:90px;width:50px;height:50px;border-radius:50%;background:#161616;color:#4ade80;border:1px solid #222;cursor:pointer;z-index:1000;font-size:20px;">
+    🔍
+</button>
+
+<script>
+// 搜索数据
+let searchData = [];
+
+// 加载搜索数据
+async function loadSearchData() {
+    try {
+        const response = await fetch('/index.json');
+        searchData = await response.json();
+    } catch (e) {
+        console.log('Search data not available');
+    }
+}
+
+// 打开搜索
+function openSearch() {
+    document.getElementById('search-modal').style.display = 'block';
+    document.getElementById('search-input').focus();
+    document.body.style.overflow = 'hidden';
+}
+
+// 关闭搜索
+function closeSearch() {
+    document.getElementById('search-modal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// 执行搜索
+function performSearch(query) {
+    const resultsDiv = document.getElementById('search-results');
+    
+    if (!query || query.length < 2) {
+        resultsDiv.innerHTML = '';
+        return;
+    }
+    
+    const results = searchData.filter(item => {
+        const searchStr = (item.title + ' ' + item.content + ' ' + (item.tags || []).join(' ')).toLowerCase();
+        return searchStr.includes(query.toLowerCase());
+    });
+    
+    if (results.length === 0) {
+        resultsDiv.innerHTML = '<p style="color:#888;">没有找到相关结果</p>';
+        return;
+    }
+    
+    resultsDiv.innerHTML = results.slice(0, 10).map(item => `
+        <a href="${item.permalink}" style="display:block;padding:15px;background:#161616;border:1px solid #222;border-radius:8px;margin-bottom:10px;text-decoration:none;transition:border-color 0.3s;"
+           onmouseover="this.style.borderColor='#4ade80'" onmouseout="this.style.borderColor='#222'">
+            <h3 style="color:white;font-size:1rem;margin-bottom:5px;">${item.title}</h3>
+            <p style="color:#888;font-size:0.85rem;margin:0;">${item.content.substring(0, 100)}...</p>
+            ${item.tags ? `<div style="margin-top:8px;">${item.tags.map(tag => `<span style="background:#222;color:#888;padding:2px 8px;border-radius:4px;font-size:0.75rem;margin-right:5px;">${tag}</span>`).join('')}</div>` : ''}
+        </a>
+    `).join('');
+}
+
+// 键盘快捷键
+document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        openSearch();
+    }
+    if (e.key === 'Escape') {
+        closeSearch();
+    }
+});
+
+// 加载搜索数据
+loadSearchData();
+</script>
