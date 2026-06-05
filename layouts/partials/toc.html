@@ -1,7 +1,6 @@
 <!-- 文章目录 TOC -->
 {{ if and .IsPage .TableOfContents }}
-{{ $headers := findRE "<h[1-6].*?>(.|\\n]*?)</h[1-6]>" .Content }}
-{{ if $headers }}
+{{ if ne .TableOfContents "<nav id=\"TableOfContents\"></nav>" }}
 
 <!-- 桌面端浮动目录 -->
 <div id="toc-container" style="position:fixed;left:20px;top:100px;width:200px;max-height:calc(100vh - 150px);overflow-y:auto;z-index:100;">
