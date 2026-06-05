@@ -128,7 +128,33 @@
     })();
     </script>
 
-    <!-- Service Worker Registration -->
+    
+<!-- 音乐播放器 -->
+<link rel="stylesheet" href="/css/APlayer.min.css">
+<div id="aplayer" style="position:fixed;bottom:0;left:0;right:0;z-index:9998;"></div>
+<script src="/js/APlayer.min.js"></script>
+<script src="/js/Meting.min.js"></script>
+<script>
+var ap = new APlayer({
+    container: document.getElementById('aplayer'),
+    mini: true,
+    autoplay: false,
+    lrcType: 3,
+    mutex: true,
+    preload: 'auto',
+    volume: 0.7,
+    audio: [
+        {
+            name: '示例歌曲',
+            artist: '示例歌手',
+            url: '',
+            cover: '',
+        }
+    ]
+});
+</script>
+
+<!-- Service Worker Registration -->
     <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js')
