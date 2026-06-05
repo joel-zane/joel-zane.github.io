@@ -1,53 +1,175 @@
-:root {
-  --waline-theme-color: #4ade80;
-  --waline-active-color: #22c55e;
-  --waline-color: #ccc;
-  --waline-bg-color: #161616;
-  --waline-bg-color-light: #1e1e1e;
-  --waline-bg-color-hover: #252525;
-  --waline-border-color: #333;
-  --waline-disable-bg-color: #1e1e1e;
-  --waline-disable-color: #555;
-  --waline-code-bg-color: #0d0d0d;
-  --waline-bq-color: #333;
-  --waline-info-bg-color: #1e1e1e;
-  --waline-info-color: #888;
-  --waline-white: #eee;
-  --waline-light-grey: #888;
-  --waline-dark-grey: #aaa;
-  --waline-warning-color: #eab308;
-  --waline-warning-bg-color: rgba(234,179,8,0.1);
+/* Waline v3 暗色主题 — 强制覆盖内置样式 */
+[data-waline] {
+  --waline-theme-color: #4ade80 !important;
+  --waline-active-color: #22c55e !important;
+  --waline-color: #ccc !important;
+  --waline-bg-color: #161616 !important;
+  --waline-bg-color-light: #1e1e1e !important;
+  --waline-bg-color-hover: #252525 !important;
+  --waline-border-color: #333 !important;
+  --waline-disable-bg-color: #1e1e1e !important;
+  --waline-disable-color: #555 !important;
+  --waline-code-bg-color: #0d0d0d !important;
+  --waline-bq-color: #333 !important;
+  --waline-info-bg-color: #1e1e1e !important;
+  --waline-info-color: #888 !important;
+  --waline-white: #eee !important;
+  --waline-light-grey: #888 !important;
+  --waline-dark-grey: #aaa !important;
+  color: #ccc;
 }
-[data-waline] { color: var(--waline-color); }
-[data-waline] a { color: var(--waline-theme-color); }
-.wl-btn { border-color: #444; color: #ccc; background: transparent; }
-.wl-btn:hover, .wl-btn:active { border-color: var(--waline-theme-color); color: var(--waline-theme-color); }
-.wl-btn.primary { background: var(--waline-theme-color); color: #0d0d0d; border-color: var(--waline-theme-color); }
-.wl-panel { background: var(--waline-bg-color); border-color: var(--waline-border-color); box-shadow: none; }
-.wl-header { border-bottom-color: #333; }
-.wl-header label { color: #aaa; }
-.wl-header input { background: transparent; color: #ccc; }
-.wl-header-item:not(:last-child) { border-bottom-color: #333; }
-.wl-editor { background: #111; color: #ccc; border: 1px solid #333; }
-.wl-editor:focus { background: #1a1a1a; border-color: var(--waline-theme-color); }
-.wl-input { background: transparent; color: #ccc; }
-.wl-input:focus { background: #1a1a1a; }
-.wl-card { border-bottom-color: #2a2a2a; }
-.wl-card .wl-nick { color: #eee; }
-.wl-card .wl-time { color: #666; }
-.wl-card .wl-meta > span { background: #1e1e1e; color: #888; }
-.wl-card .wl-content { color: #bbb; }
-.wl-card .wl-delete, .wl-card .wl-like, .wl-card .wl-reply, .wl-card .wl-edit { color: #888; }
-.wl-card .wl-delete:hover, .wl-card .wl-like:hover, .wl-card .wl-reply:hover, .wl-card .wl-edit:hover { color: var(--waline-theme-color); }
-.wl-card .wl-like.active { color: var(--waline-theme-color); }
-.wl-count { color: #eee; }
-.wl-empty { color: #888; }
-.wl-sort li { color: #888; }
-.wl-sort li.active { color: var(--waline-theme-color); }
-.wl-emoji-popup { background: #161616; border-color: #333; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-.wl-emoji-popup button:hover { background: #252525; }
-.wl-emoji-popup .wl-tab.active { background: #161616; border-color: #333; }
-.wl-preview { color: #ccc; }
-.wl-info .wl-text-number { color: #666; }
-.wl-power { color: #555; }
-.wl-login-nick { color: var(--waline-theme-color); }
+
+/* 主容器 */
+[data-waline],
+[data-waline] .wl-panel,
+[data-waline] .wl-comment,
+[data-waline] .wl-card-item,
+[data-waline] .wl-card {
+  background: #161616 !important;
+  color: #ccc !important;
+}
+
+/* 输入面板 */
+[data-waline] .wl-panel {
+  background: #161616 !important;
+  border-color: #333 !important;
+  box-shadow: none !important;
+}
+
+/* 头部（昵称、邮箱输入区） */
+[data-waline] .wl-header {
+  border-bottom-color: #333 !important;
+}
+[data-waline] .wl-header label {
+  color: #aaa !important;
+}
+[data-waline] .wl-header input,
+[data-waline] .wl-input {
+  background: #111 !important;
+  color: #ccc !important;
+  border-color: #333 !important;
+}
+[data-waline] .wl-header input:focus,
+[data-waline] .wl-input:focus {
+  background: #1a1a1a !important;
+  border-color: #4ade80 !important;
+}
+[data-waline] .wl-header-item {
+  border-bottom-color: #333 !important;
+}
+
+/* 编辑器 */
+[data-waline] .wl-editor {
+  background: #111 !important;
+  color: #ccc !important;
+  border-color: #333 !important;
+}
+[data-waline] .wl-editor:focus {
+  background: #1a1a1a !important;
+  border-color: #4ade80 !important;
+}
+
+/* 按钮 */
+[data-waline] .wl-btn {
+  border-color: #444 !important;
+  color: #ccc !important;
+  background: transparent !important;
+}
+[data-waline] .wl-btn:hover,
+[data-waline] .wl-btn:active {
+  border-color: #4ade80 !important;
+  color: #4ade80 !important;
+}
+[data-waline] .wl-btn.primary {
+  background: #4ade80 !important;
+  color: #0d0d0d !important;
+  border-color: #4ade80 !important;
+}
+
+/* 评论卡片 */
+[data-waline] .wl-card {
+  border-bottom-color: #2a2a2a !important;
+}
+[data-waline] .wl-card .wl-nick { color: #eee !important; }
+[data-waline] .wl-card .wl-time { color: #666 !important; }
+[data-waline] .wl-card .wl-meta > span {
+  background: #1e1e1e !important;
+  color: #888 !important;
+}
+[data-waline] .wl-card .wl-content { color: #bbb !important; }
+[data-waline] .wl-card .wl-delete,
+[data-waline] .wl-card .wl-like,
+[data-waline] .wl-card .wl-reply,
+[data-waline] .wl-card .wl-edit { color: #888 !important; }
+[data-waline] .wl-card .wl-delete:hover,
+[data-waline] .wl-card .wl-like:hover,
+[data-waline] .wl-card .wl-reply:hover,
+[data-waline] .wl-card .wl-edit:hover { color: #4ade80 !important; }
+[data-waline] .wl-card .wl-like.active { color: #4ade80 !important; }
+
+/* 链接 */
+[data-waline] a { color: #4ade80 !important; }
+
+/* 计数和排序 */
+[data-waline] .wl-count { color: #eee !important; }
+[data-waline] .wl-empty { color: #888 !important; }
+[data-waline] .wl-num { color: #4ade80 !important; }
+[data-waline] .wl-sort li { color: #888 !important; }
+[data-waline] .wl-sort li.active { color: #4ade80 !important; }
+
+/* 表情弹窗 */
+[data-waline] .wl-emoji-popup {
+  background: #161616 !important;
+  border-color: #333 !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+}
+[data-waline] .wl-emoji-popup button:hover { background: #252525 !important; }
+[data-waline] .wl-emoji-popup .wl-tab.active {
+  background: #161616 !important;
+  border-color: #333 !important;
+}
+
+/* 预览 */
+[data-waline] .wl-preview { color: #ccc !important; }
+[data-waline] .wl-preview hr { border-color: #333 !important; }
+
+/* 字数统计 */
+[data-waline] .wl-info .wl-text-number { color: #666 !important; }
+[data-waline] .wl-text-number .illegal { color: #ef4444 !important; }
+
+/* 底部 */
+[data-waline] .wl-power { color: #555 !important; }
+[data-waline] .wl-power a { color: #666 !important; }
+[data-waline] .wl-login-nick { color: #4ade80 !important; }
+
+/* 动作栏 */
+[data-waline] .wl-action { color: #888 !important; }
+[data-waline] .wl-action:hover { color: #4ade80 !important; }
+[data-waline] .wl-action.active { color: #4ade80 !important; }
+
+/* GIF 弹窗 */
+[data-waline] .wl-gif-popup { background: #161616 !important; }
+[data-waline] .wl-gif-popup input {
+  background: #111 !important;
+  color: #ccc !important;
+  border-color: #333 !important;
+}
+
+/* 用户头像区域 */
+[data-waline] .wl-user-avatar {
+  border-color: #333 !important;
+}
+
+/* 评论状态按钮 */
+[data-waline] .wl-btn.wl-approved { color: #4ade80 !important; }
+[data-waline] .wl-btn.wl-waiting { color: #eab308 !important; }
+[data-waline] .wl-btn.wl-spam { color: #ef4444 !important; }
+
+/* 回复引用 */
+[data-waline] .wl-quote { border-color: #333 !important; }
+[data-waline] .wl-reply-to a { color: #4ade80 !important; }
+
+/* 星级评分 */
+[data-waline] .wl-star-icon .wl-star-solid { fill: #4ade80 !important; }
+[data-waline] .wl-star-icon .wl-star-outline { fill: #555 !important; }
+[data-waline] .wl-star-progress-bar { background: #2a2a2a !important; }
