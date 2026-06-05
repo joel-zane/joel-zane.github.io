@@ -18,21 +18,321 @@
     "date": "2026-03-20"
   },
   {
-    "title": "篮球",
-    "description": "NBA 比赛精彩瞬间",
-    "image": "/images/gallery/basketball.jpg",
+    "title": "猫",
+    "description": "我家的猫",
+    "image": "/images/gallery/cat.jpg",
     "date": "2026-01-10"
   },
   {
-    "title": "动漫",
-    "description": "喜欢的动漫截图",
-    "image": "/images/gallery/anime.jpg",
-    "date": "2025-08-05"
+    "title": "咖啡",
+    "description": "一杯咖啡",
+    "image": "/images/gallery/coffee.jpg",
+    "date": "2026-02-14"
   },
   {
-    "title": "校园",
-    "description": "美丽的校园风景",
-    "image": "/images/gallery/campus.jpg",
-    "date": "2026-05-01"
+    "title": "日落",
+    "description": "美丽的日落",
+    "image": "/images/gallery/sunset.jpg",
+    "date": "2026-04-05"
+  },
+  {
+    "title": "Anthony Edwards 跳投",
+    "description": "NBA赛场上的精彩瞬间",
+    "image": "/images/gallery/img_7ee6fbad2bf2.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Edwards 俯拍",
+    "description": "独特的俯视角度拍摄",
+    "image": "/images/gallery/img_bddb88822431.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "双鸭戏水",
+    "description": "水面上的两只鸭子",
+    "image": "/images/gallery/img_d790fc09f3c9.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "夜桥流光",
+    "description": "夜晚的灯光与桥影",
+    "image": "/images/gallery/img_29faaab2f78f.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "燕尾服猫",
+    "description": "黑白相间的可爱猫咪",
+    "image": "/images/gallery/img_58a04ec8cd76.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "夜猫",
+    "description": "路灯下的橘猫",
+    "image": "/images/gallery/img_46e8b682ff85.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "水禽",
+    "description": "绿头鸭与白鸭同游",
+    "image": "/images/gallery/img_b04f15ccb883.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "对戒",
+    "description": "两双手、一对戒指",
+    "image": "/images/gallery/img_3e067c8f55a3.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "竹林仰望",
+    "description": "抬头看竹林与天空",
+    "image": "/images/gallery/img_e7ac0c9be86a.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "蜘蛛侠 Bug",
+    "description": "游戏里的搞笑穿模",
+    "image": "/images/gallery/img_60200ec14c68.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "金色云海",
+    "description": "日落时分壮丽的积云",
+    "image": "/images/gallery/img_0559ff4cc92a.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "屋顶蜘蛛侠",
+    "description": "手办夜景拍摄",
+    "image": "/images/gallery/img_32e43abdad20.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "电线与夕阳",
+    "description": "工业与自然的交汇",
+    "image": "/images/gallery/img_f06f27d4f161.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "黑白篮球",
+    "description": "复古风格篮球肖像",
+    "image": "/images/gallery/img_87ee23a03c90.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Jordan Brand",
+    "description": "Jaden Smith × Jordan",
+    "image": "/images/gallery/img_266753e9f34c.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "田园风光",
+    "description": "广阔的绿色稻田",
+    "image": "/images/gallery/img_c68e94707d71.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "东京塔仰拍",
+    "description": "从下往上仰望东京塔",
+    "image": "/images/gallery/img_60038f820a2f.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "火山与海",
+    "description": "黄昏时分的火山剪影",
+    "image": "/images/gallery/img_22a157972f9b.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "东京塔与公园",
+    "description": "阳光下的东京塔远景",
+    "image": "/images/gallery/img_087e6e519e55.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "海边小镇",
+    "description": "俯瞰日本海岸小城",
+    "image": "/images/gallery/img_2d80e859a2a9.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "海岸悬崖",
+    "description": "碧海蓝天的海岸线",
+    "image": "/images/gallery/img_946f26e1be33.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "城市黄昏",
+    "description": "HOTEL KURETAKESO 日落",
+    "image": "/images/gallery/img_ec05c5ee6102.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "牛肉饭定食",
+    "description": "日式午餐套餐",
+    "image": "/images/gallery/img_63836ef60cae.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "大阪城",
+    "description": "仰望大阪城天守阁",
+    "image": "/images/gallery/img_9dfd5f5e8d9d.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "金阁寺",
+    "description": "京都金阁寺倒映水中",
+    "image": "/images/gallery/img_a4a022df9309.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "护城河",
+    "description": "古城石墙与碧水",
+    "image": "/images/gallery/img_83b0ec8b8500.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "山野小路",
+    "description": "远处青山绵延",
+    "image": "/images/gallery/img_b4c4b1110fa9.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "夜色光斑",
+    "description": "失焦的城市夜灯",
+    "image": "/images/gallery/img_0becdbea0a23.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "城市天际线",
+    "description": "中国城市商务区",
+    "image": "/images/gallery/img_c6d1c5bfd35a.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "城市街道",
+    "description": "绿荫下的城市道路",
+    "image": "/images/gallery/img_214c8bf26444.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "人生是徒劳",
+    "description": "「人生是永无止尽的徒劳」",
+    "image": "/images/gallery/img_a719359ac7bd.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "夜谈",
+    "description": "「我们这样也算是自由的」",
+    "image": "/images/gallery/img_91ba75dfd5d9.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "黄昏之时",
+    "description": "《你的名字》黄昏之时",
+    "image": "/images/gallery/img_0199340d60a5.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "混沌武士",
+    "description": "Samurai Champloo 四格",
+    "image": "/images/gallery/img_e75ba4d27906.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "万恶之源",
+    "description": "「把希望寄托在其他可能性上正是万恶之源」",
+    "image": "/images/gallery/img_f0427e871a08.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "水渠与电线",
+    "description": "平静的水渠风景",
+    "image": "/images/gallery/img_aec17f73e1a3.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "秒速五厘米",
+    "description": "「我们是改变不了世界的」",
+    "image": "/images/gallery/img_1dd1a89c5204.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "投篮",
+    "description": "户外篮球场的投篮瞬间",
+    "image": "/images/gallery/img_dc3c51a62119.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "佛香阁",
+    "description": "颐和园佛香阁仰拍",
+    "image": "/images/gallery/img_0c701e831c5e.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "雾中独立",
+    "description": "动漫中的孤独背影",
+    "image": "/images/gallery/img_c40be327be67.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Kobe",
+    "description": "Kobe Bryant 赛场沉思",
+    "image": "/images/gallery/img_4f4641c8c9e3.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "好奇的猫",
+    "description": "夜晚仰望的猫咪",
+    "image": "/images/gallery/img_586269cc4396.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "跳投剪影",
+    "description": "城市篮球场的跳投",
+    "image": "/images/gallery/img_4f4f7d0d8682.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "走廊庆祝",
+    "description": "穿着24号球衣的少年",
+    "image": "/images/gallery/img_03266a498d02.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "暮色天桥",
+    "description": "黄昏时分的城市步道",
+    "image": "/images/gallery/img_6f9abd0409a2.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "线描少女",
+    "description": "墨线漫画插画",
+    "image": "/images/gallery/img_a92cd1a8b690.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "蓝线肖像",
+    "description": "粗犷的速写人像",
+    "image": "/images/gallery/img_0302b2f6cd2b.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "最后的温暖",
+    "description": "《进击的巨人》最终幕",
+    "image": "/images/gallery/img_cca0191a0b3b.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "数字故障",
+    "description": "赛博朋克风格人像",
+    "image": "/images/gallery/img_daad19ee5846.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "伦敦之夜",
+    "description": "威斯敏斯特桥黑白长曝光",
+    "image": "/images/gallery/img_ec9d038a3436.jpg",
+    "date": "2026-06-05"
   }
 ]

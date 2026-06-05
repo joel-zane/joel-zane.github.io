@@ -1,0 +1,124 @@
+{{ define "main" }}
+<div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+    <h1 style="color: #4ade80; margin-bottom: 20px;">📊 系统仪表盘</h1>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px;">
+        <!-- Oracle Cloud -->
+        <div class="card">
+            <h3>☁️ Oracle Cloud</h3>
+            <p>IP: 40.233.72.74</p>
+            <p>状态: <span style="color: #4ade80;">●</span> 已连接</p>
+            <p>区域: 巴林</p>
+        </div>
+
+        <!-- Windows 11 -->
+        <div class="card">
+            <h3>💼 Windows 11</h3>
+            <p>IP: 10.10.0.2</p>
+            <p>状态: <span style="color: #ef4444;">●</span> 未连接</p>
+            <p>隧道: WireGuard</p>
+        </div>
+
+        <!-- macOS -->
+        <div class="card">
+            <h3>💻 macOS</h3>
+            <p>协议: SSH</p>
+            <p>状态: <span style="color: #eab308;">●</span> 就绪</p>
+        </div>
+
+        <!-- Hermes Agent -->
+        <div class="card">
+            <h3>🤖 Hermes Agent</h3>
+            <p>平台: WeChat</p>
+            <p>状态: <span style="color: #4ade80;">●</span> 活跃</p>
+        </div>
+    </div>
+
+    <h2 style="color: #4ade80; margin: 30px 0 20px;">📈 系统资源</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px;">
+        <div class="card">
+            <h3>🖥️ CPU 使用率</h3>
+            <div class="progress-container">
+                <div class="progress-bar"><div class="progress-fill" style="width: 5%"></div></div>
+                <span>5%</span>
+            </div>
+        </div>
+        <div class="card">
+            <h3>💾 内存使用</h3>
+            <div class="progress-container">
+                <div class="progress-bar"><div class="progress-fill" style="width: 5%"></div></div>
+                <span>5% (1.2GB / 23.5GB)</span>
+            </div>
+        </div>
+        <div class="card">
+            <h3>💿 磁盘使用</h3>
+            <div class="progress-container">
+                <div class="progress-bar"><div class="progress-fill" style="width: 13%"></div></div>
+                <span>13% (26GB / 200GB)</span>
+            </div>
+        </div>
+    </div>
+
+    <h2 style="color: #4ade80; margin: 30px 0 20px;">⏰ 定时任务</h2>
+    <div class="card">
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th style="text-align: left; padding: 10px; border-bottom: 1px solid rgba(74, 222, 128, 0.2);">任务</th>
+                    <th style="text-align: left; padding: 10px; border-bottom: 1px solid rgba(74, 222, 128, 0.2);">时间</th>
+                    <th style="text-align: left; padding: 10px; border-bottom: 1px solid rgba(74, 222, 128, 0.2);">状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>🌤️ 每日天气</td><td>06:00</td><td><span style="color: #4ade80;">✓ 正常</span></td></tr>
+                <tr><td>📰 新闻早报</td><td>09:00</td><td><span style="color: #4ade80;">✓ 正常</span></td></tr>
+                <tr><td>📝 晚间反思</td><td>22:00</td><td><span style="color: #4ade80;">✓ 正常</span></td></tr>
+                <tr><td>🔄 hg-link 同步</td><td>每4小时</td><td><span style="color: #4ade80;">✓ 正常</span></td></tr>
+                <tr><td>💾 每日备份</td><td>03:00</td><td><span style="color: #4ade80;">✓ 正常</span></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p style="text-align: center; margin-top: 40px; color: #666;">
+        最后更新: <span id="lastUpdate"></span>
+    </p>
+</div>
+
+<style>
+    .card {
+        background: rgba(20, 20, 20, 0.95);
+        border: 1px solid rgba(74, 222, 128, 0.15);
+        border-radius: 12px;
+        padding: 20px;
+    }
+    .card h3 { color: #ccc; margin-bottom: 10px; }
+    .card p { color: #888; margin: 5px 0; }
+    .progress-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .progress-bar {
+        flex-grow: 1;
+        height: 10px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    .progress-fill {
+        height: 100%;
+        background: #4ade80;
+        border-radius: 5px;
+    }
+    table tr {
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    table td, table th {
+        padding: 12px 10px;
+    }
+</style>
+
+<script>
+    document.getElementById('lastUpdate').textContent = new Date().toLocaleString('zh-CN');
+</script>
+{{ end }}
