@@ -1,13 +1,13 @@
 <!-- Waline 评论 -->
-<link rel="stylesheet" href="/css/waline.css" />
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
 <div id="waline" style="margin-top:3rem;padding-top:2rem;border-top:1px solid #333;"></div>
 <script type="module">
-  import { init } from '/js/waline.js';
+  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
   init({
     el: '#waline',
     serverURL: '/api/waline',
     lang: '{{ if eq .Lang "en" }}en{{ else }}zh-CN{{ end }}',
-    dark: true,
+    dark: 'html:not([data-theme="light"])',
     meta: ['nick', 'mail'],
     requiredMeta: ['nick'],
     login: 'disable',

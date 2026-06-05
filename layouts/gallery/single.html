@@ -69,7 +69,7 @@
 .lb-prev:hover,.lb-next:hover{color:#4ade80}
 </style>
 
-<link rel="stylesheet" href="/css/waline.css">
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
 <script>
 var galleryData = {{ $gallery }};
 var currentIndex = 0;
@@ -138,7 +138,7 @@ function updateLightbox() {
             el: '#waline-gallery',
             serverURL: '/api/waline',
             path: '/gallery/' + item.image.split('/').pop().replace('.jpg', ''),
-            dark: true,
+            dark: 'html:not([data-theme="light"])',
             lang: '{{ .Lang }}',
             meta: ['nick', 'mail'],
             requiredMeta: [],
@@ -204,7 +204,7 @@ document.addEventListener('keydown', function(e) {
 
 <!-- Waline v3 ES Module -->
 <script type="module">
-import { init } from '/js/waline.js';
+import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
 window.__waline_init = init;
 </script>
 {{ else }}
