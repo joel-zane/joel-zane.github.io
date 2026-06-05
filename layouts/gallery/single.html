@@ -69,7 +69,7 @@
 .lb-prev:hover,.lb-next:hover{color:#4ade80}
 </style>
 
-<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<link rel="stylesheet" href="/css/waline.css">
 <script>
 var galleryData = {{ $gallery }};
 var currentIndex = 0;
@@ -204,7 +204,7 @@ document.addEventListener('keydown', function(e) {
 
 <!-- Waline v3 ES Module -->
 <script type="module">
-import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+import { init } from '/js/waline.js';
 window.__waline_init = init;
 </script>
 {{ else }}
