@@ -2,6 +2,8 @@
 {{ if and .IsPage .TableOfContents }}
 {{ $headers := findRE "<h[1-6].*?>(.|\\n]*?)</h[1-6]>" .Content }}
 {{ if $headers }}
+
+<!-- 桌面端浮动目录 -->
 <div id="toc-container" style="position:fixed;left:20px;top:100px;width:200px;max-height:calc(100vh - 150px);overflow-y:auto;z-index:100;">
     <div style="background:#161616;border:1px solid #222;border-radius:8px;padding:15px;">
         <p style="color:#4ade80;font-size:0.85rem;font-weight:600;margin-bottom:10px;">{{ i18n "tableOfContents" }}</p>
@@ -11,24 +13,42 @@
     </div>
 </div>
 
+<!-- 移动端折叠目录 -->
+<details id="toc-mobile" style="margin-bottom:16px;background:#161616;border:1px solid #222;border-radius:8px;padding:0;">
+    <summary style="padding:12px 16px;cursor:pointer;color:#4ade80;font-size:0.9rem;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+        {{ i18n "tableOfContents" }}
+        <span style="font-size:0.75rem;transition:transform 0.2s;">▼</span>
+    </summary>
+    <div style="padding:0 16px 12px;">
+        <nav id="TableOfContents-mobile">
+            {{ .TableOfContents }}
+        </nav>
+    </div>
+</details>
+
 <style>
-#toc-container {
-    display: none;
-}
+/* 桌面端 */
+#toc-container { display: none; }
 @media (min-width: 1400px) {
-    #toc-container {
-        display: block;
-    }
+    #toc-container { display: block; }
 }
-#toc-container ul {
+/* 移动端 */
+#toc-mobile { display: block; }
+@media (min-width: 1400px) {
+    #toc-mobile { display: none; }
+}
+#toc-mobile[open] summary span { transform: rotate(180deg); }
+
+/* 通用 TOC 样式 */
+#toc-container ul, #toc-mobile ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-#toc-container li {
+#toc-container li, #toc-mobile li {
     margin: 5px 0;
 }
-#toc-container a {
+#toc-container a, #toc-mobile a {
     color: #888;
     text-decoration: none;
     font-size: 0.8rem;
@@ -36,31 +56,30 @@
     display: block;
     padding: 3px 0;
 }
-#toc-container a:hover,
-#toc-container a.active {
+#toc-container a:hover, #toc-container a.active,
+#toc-mobile a:hover, #toc-mobile a.active {
     color: #4ade80;
 }
-#toc-container .toc-h1 { padding-left: 0; }
-#toc-container .toc-h2 { padding-left: 10px; }
-#toc-container .toc-h3 { padding-left: 20px; }
-#toc-container .toc-h4 { padding-left: 30px; }
+.toc-h1 { padding-left: 0; }
+.toc-h2 { padding-left: 10px; }
+.toc-h3 { padding-left: 20px; }
+.toc-h4 { padding-left: 30px; }
 </style>
 
 <script>
-// 高亮当前阅读的章节
 window.addEventListener('scroll', function() {
-    const headings = document.querySelectorAll('h1, h2, h3, h4');
-    const tocLinks = document.querySelectorAll('#toc-container a');
+    var headings = document.querySelectorAll('h1, h2, h3, h4');
+    var tocLinks = document.querySelectorAll('#toc-container a, #toc-mobile a');
     
-    let current = '';
-    headings.forEach(heading => {
-        const rect = heading.getBoundingClientRect();
+    var current = '';
+    headings.forEach(function(heading) {
+        var rect = heading.getBoundingClientRect();
         if (rect.top <= 100) {
             current = heading.id;
         }
     });
     
-    tocLinks.forEach(link => {
+    tocLinks.forEach(function(link) {
         link.classList.remove('active');
         if (link.getAttribute('href') === '#' + current) {
             link.classList.add('active');
