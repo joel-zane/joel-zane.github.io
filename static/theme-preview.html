@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>主题配色预览</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0a;color:#ccc;padding:20px}
+h1{text-align:center;color:#fff;margin-bottom:30px;font-size:1.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.card{border-radius:12px;overflow:hidden;border:1px solid #333;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.card-header{padding:20px;display:flex;justify-content:space-between;align-items:center}
+.card-body{padding:0 20px 20px}
+.card-name{font-size:1.1rem;font-weight:600;color:#fff}
+.card-tag{font-size:.75rem;padding:3px 10px;border-radius:20px;font-weight:500}
+.nav{display:flex;gap:16px;margin-bottom:16px}
+.nav a{text-decoration:none;font-size:.85rem;padding:6px 0}
+.hero{margin-bottom:16px}
+.hero h2{font-size:1.3rem;font-weight:700;margin-bottom:6px}
+.hero p{font-size:.8rem;line-height:1.5}
+.btn{display:inline-block;padding:8px 18px;border-radius:6px;font-size:.8rem;font-weight:600;text-decoration:none;margin-right:8px;margin-top:8px}
+.tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.7rem;margin-right:6px;margin-top:6px}
+.code{padding:12px;border-radius:6px;font-family:monospace;font-size:.75rem;margin-top:12px}
+.comment{padding:12px;border-radius:8px;margin-top:12px}
+.comment .head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.comment .avatar{width:28px;height:28px;border-radius:50%}
+.comment .name{font-size:.8rem;font-weight:600}
+.comment .time{font-size:.7rem}
+.comment .text{font-size:.78rem;line-height:1.5}
+.btn-group{margin-top:8px}
+.btn-group span{font-size:.7rem;padding:4px 10px;border-radius:4px;margin-right:6px}
+</style>
+</head>
+<body>
+<h1>🎨 选择你想要的主题</h1>
+<div class="grid">
+
+<!-- 暗银 (当前) -->
+<div class="card" onclick="selectTheme('silver')">
+  <div class="card-header" style="background:#0f0f0f">
+    <span class="card-name">暗银 Dark Silver</span>
+    <span class="card-tag" style="background:#a8b4c0;color:#0f0f0f">当前</span>
+  </div>
+  <div class="card-body" style="background:#0f0f0f">
+    <div class="nav">
+      <a style="color:#a8b4c0">首页</a>
+      <a style="color:#888">博客</a>
+      <a style="color:#888">项目</a>
+      <a style="color:#888">画廊</a>
+    </div>
+    <div class="hero">
+      <h2 style="color:#fff">一期一会</h2>
+      <p style="color:#888">记录生活、技术与思考</p>
+    </div>
+    <span class="btn" style="background:#a8b4c0;color:#0f0f0f">了解更多</span>
+    <span class="btn" style="background:transparent;color:#a8b4c0;border:1px solid #a8b4c0">GitHub</span>
+    <div style="margin-top:14px">
+      <span class="tag" style="background:#1a1a1a;color:#a8b4c0;border:1px solid #333">AI</span>
+      <span class="tag" style="background:#1a1a1a;color:#8a9aaa;border:1px solid #333">NBA</span>
+    </div>
+    <div class="comment" style="background:#161616;border:1px solid #222">
+      <div class="head">
+        <div class="avatar" style="background:#a8b4c0"></div>
+        <span class="name" style="color:#eee">访客</span>
+        <span class="time" style="color:#666">2小时前</span>
+      </div>
+      <div class="text" style="color:#bbb">很棒的网站！</div>
+    </div>
+    <div class="code" style="background:#161616;color:#a8b4c0">// 暗银配色 #0f0f0f + #a8b4c0</div>
+  </div>
+</div>
+
+<!-- 黑金 -->
+<div class="card" onclick="selectTheme('gold')">
+  <div class="card-header" style="background:#0a0a0a">
+    <span class="card-name">黑金 Black Gold</span>
+  </div>
+  <div class="card-body" style="background:#0a0a0a">
+    <div class="nav">
+      <a style="color:#d4a853">首页</a>
+      <a style="color:#888">博客</a>
+      <a style="color:#888">项目</a>
+      <a style="color:#888">画廊</a>
+    </div>
+    <div class="hero">
+      <h2 style="color:#fff">一期一会</h2>
+      <p style="color:#888">记录生活、技术与思考</p>
+    </div>
+    <span class="btn" style="background:#d4a853;color:#0a0a0a">了解更多</span>
+    <span class="btn" style="background:transparent;color:#d4a853;border:1px solid #d4a853">GitHub</span>
+    <div style="margin-top:14px">
+      <span class="tag" style="background:#1a1a1a;color:#d4a853;border:1px solid #333">AI</span>
+      <span class="tag" style="background:#1a1a1a;color:#b8923e;border:1px solid #333">NBA</span>
+    </div>
+    <div class="comment" style="background:#141414;border:1px solid #222">
+      <div class="head">
+        <div class="avatar" style="background:#d4a853"></div>
+        <span class="name" style="color:#eee">访客</span>
+        <span class="time" style="color:#666">2小时前</span>
+      </div>
+      <div class="text" style="color:#bbb">很棒的网站！</div>
+    </div>
+    <div class="code" style="background:#141414;color:#d4a853">// 黑金配色 #0a0a0a + #d4a853</div>
+  </div>
+</div>
+
+<!-- 深蓝紫 -->
+<div class="card" onclick="selectTheme('purple')">
+  <div class="card-header" style="background:#0a0e1a">
+    <span class="card-name">深蓝紫 Cyber Purple</span>
+  </div>
+  <div class="card-body" style="background:#0a0e1a">
+    <div class="nav">
+      <a style="color:#7c6aef">首页</a>
+      <a style="color:#888">博客</a>
+      <a style="color:#888">项目</a>
+      <a style="color:#888">画廊</a>
+    </div>
+    <div class="hero">
+      <h2 style="color:#fff">一期一会</h2>
+      <p style="color:#888">记录生活、技术与思考</p>
+    </div>
+    <span class="btn" style="background:#7c6aef;color:#fff">了解更多</span>
+    <span class="btn" style="background:transparent;color:#7c6aef;border:1px solid #7c6aef">GitHub</span>
+    <div style="margin-top:14px">
+      <span class="tag" style="background:#141828;color:#7c6aef;border:1px solid #2a2e4a">AI</span>
+      <span class="tag" style="background:#141828;color:#6555d0;border:1px solid #2a2e4a">NBA</span>
+    </div>
+    <div class="comment" style="background:#111625;border:1px solid #1e2340">
+      <div class="head">
+        <div class="avatar" style="background:#7c6aef"></div>
+        <span class="name" style="color:#eee">访客</span>
+        <span class="time" style="color:#666">2小时前</span>
+      </div>
+      <div class="text" style="color:#bbb">很棒的网站！</div>
+    </div>
+    <div class="code" style="background:#111625;color:#7c6aef">// 赛博紫配色 #0a0e1a + #7c6aef</div>
+  </div>
+</div>
+
+<!-- 冰蓝 -->
+<div class="card" onclick="selectTheme('ice')">
+  <div class="card-header" style="background:#080c12">
+    <span class="card-name">冰蓝 Ice Blue</span>
+  </div>
+  <div class="card-body" style="background:#080c12">
+    <div class="nav">
+      <a style="color:#38bdf8">首页</a>
+      <a style="color:#888">博客</a>
+      <a style="color:#888">项目</a>
+      <a style="color:#888">画廊</a>
+    </div>
+    <div class="hero">
+      <h2 style="color:#fff">一期一会</h2>
+      <p style="color:#888">记录生活、技术与思考</p>
+    </div>
+    <span class="btn" style="background:#38bdf8;color:#080c12">了解更多</span>
+    <span class="btn" style="background:transparent;color:#38bdf8;border:1px solid #38bdf8">GitHub</span>
+    <div style="margin-top:14px">
+      <span class="tag" style="background:#0f1520;color:#38bdf8;border:1px solid #1e2a3a">AI</span>
+      <span class="tag" style="background:#0f1520;color:#2a9fd8;border:1px solid #1e2a3a">NBA</span>
+    </div>
+    <div class="comment" style="background:#0e1320;border:1px solid #1a2535">
+      <div class="head">
+        <div class="avatar" style="background:#38bdf8"></div>
+        <span class="name" style="color:#eee">访客</span>
+        <span class="time" style="color:#666">2小时前</span>
+      </div>
+      <div class="text" style="color:#bbb">很棒的网站！</div>
+    </div>
+    <div class="code" style="background:#0e1320;color:#38bdf8">// 冰蓝配色 #080c12 + #38bdf8</div>
+  </div>
+</div>
+
+<!-- 酒红 -->
+<div class="card" onclick="selectTheme('wine')">
+  <div class="card-header" style="background:#0a0505">
+    <span class="card-name">酒红 Wine Red</span>
+  </div>
+  <div class="card-body" style="background:#0a0505">
+    <div class="nav">
+      <a style="color:#c2425a">首页</a>
+      <a style="color:#888">博客</a>
+      <a style="color:#888">项目</a>
+      <a style="color:#888">画廊</a>
+    </div>
+    <div class="hero">
+      <h2 style="color:#fff">一期一会</h2>
+      <p style="color:#888">记录生活、技术与思考</p>
+    </div>
+    <span class="btn" style="background:#c2425a;color:#fff">了解更多</span>
+    <span class="btn" style="background:transparent;color:#c2425a;border:1px solid #c2425a">GitHub</span>
+    <div style="margin-top:14px">
+      <span class="tag" style="background:#1a0a0a;color:#c2425a;border:1px solid #331515">AI</span>
+      <span class="tag" style="background:#1a0a0a;color:#a03548;border:1px solid #331515">NBA</span>
+    </div>
+    <div class="comment" style="background:#150808;border:1px solid #2a1212">
+      <div class="head">
+        <div class="avatar" style="background:#c2425a"></div>
+        <span class="name" style="color:#eee">访客</span>
+        <span class="time" style="color:#666">2小时前</span>
+      </div>
+      <div class="text" style="color:#bbb">很棒的网站！</div>
+    </div>
+    <div class="code" style="background:#150808;color:#c2425a">// 酒红配色 #0a0505 + #c2425a</div>
+  </div>
+</div>
+
+<!-- 暗橙 -->
+<div class="card" onclick="selectTheme('orange')">
+  <div class="card-header" style="background:#0d0d0d">
+    <span class="card-name">暗橙 Dark Orange</span>
+  </div>
+  <div class="card-body" style="background:#0d0d0d">
+    <div class="nav">
+      <a style="color:#f97316">首页</a>
+      <a style="color:#888">博客</a>
+      <a style="color:#888">项目</a>
+      <a style="color:#888">画廊</a>
+    </div>
+    <div class="hero">
+      <h2 style="color:#fff">一期一会</h2>
+      <p style="color:#888">记录生活、技术与思考</p>
+    </div>
+    <span class="btn" style="background:#f97316;color:#0d0d0d">了解更多</span>
+    <span class="btn" style="background:transparent;color:#f97316;border:1px solid #f97316">GitHub</span>
+    <div style="margin-top:14px">
+      <span class="tag" style="background:#1a1410;color:#f97316;border:1px solid #332a1a">AI</span>
+      <span class="tag" style="background:#1a1410;color:#d06010;border:1px solid #332a1a">NBA</span>
+    </div>
+    <div class="comment" style="background:#161210;border:1px solid #2a2218">
+      <div class="head">
+        <div class="avatar" style="background:#f97316"></div>
+        <span class="name" style="color:#eee">访客</span>
+        <span class="time" style="color:#666">2小时前</span>
+      </div>
+      <div class="text" style="color:#bbb">很棒的网站！</div>
+    </div>
+    <div class="code" style="background:#161210;color:#f97316">// 暗橙配色 #0d0d0d + #f97316</div>
+  </div>
+</div>
+
+</div>
+
+<div style="text-align:center;margin-top:30px;color:#666;font-size:.85rem">
+  点击卡片选择主题 → 告诉我你想换哪个
+</div>
+</body>
+</html>
