@@ -1,5 +1,4 @@
 baseURL = "https://joel-zane.github.io/"
-locale = "zh-cn"
 defaultContentLanguage = "zh"
 title = "一期一会"
 theme = "archie"
@@ -16,9 +15,7 @@ copyright = "© 2026 Joel Zane"
   author = "Joel Zane"
   mathjax = false
   katex = false
-  # 不蒜子访问统计
   busuanzi = true
-  # PWA
   enablePWA = true
 
 # Social Links
@@ -32,68 +29,22 @@ copyright = "© 2026 Joel Zane"
   icon = "mail"
   url = "mailto:3151798198@qq.com"
 
-# Main Menu
-[[menu.main]]
-  name = "首页"
-  url = "/"
-  weight = 1
-
-[[menu.main]]
-  name = "博客"
-  url = "/posts/"
-  weight = 2
-
-[[menu.main]]
-  name = "项目"
-  url = "/projects/"
-  weight = 3
-
-[[menu.main]]
-  name = "画廊"
-  url = "/gallery/"
-  weight = 4
-
-[[menu.main]]
-  name = "时间线"
-  url = "/timeline/"
-  weight = 5
-
-[[menu.main]]
-  name = "工具"
-  url = "/tools/"
-  weight = 6
-
-[[menu.main]]
-  name = "关于"
-  url = "/about/"
-  weight = 7
-
-[pagination]
-  pagerSize = 10
-
-[outputs]
-  home = ["html", "rss", "json"]
-
-[taxonomies]
-  tag = "tags"
-  category = "categories"
-
-# 多语言支持
+# 多语言配置
 [languages]
   [languages.zh]
-    title = "一期一会"
     label = "中文"
+    title = "一期一会"
     weight = 1
     [languages.zh.params]
       subtitle = "一个关于AI、技术与生活的个人博客"
   [languages.en]
-    title = "Yi Qi Yi Hui"
     label = "English"
+    title = "Yi Qi Yi Hui"
     weight = 2
     [languages.en.params]
       subtitle = "A personal blog about AI, tech and life"
 
-# 菜单（多语言）
+# 中文菜单
 [[languages.zh.menu.main]]
   name = "首页"
   url = "/"
@@ -129,6 +80,7 @@ copyright = "© 2026 Joel Zane"
   url = "/about/"
   weight = 7
 
+# 英文菜单
 [[languages.en.menu.main]]
   name = "Home"
   url = "/"
@@ -163,3 +115,13 @@ copyright = "© 2026 Joel Zane"
   name = "About"
   url = "/about/"
   weight = 7
+
+[pagination]
+  pagerSize = 10
+
+[outputs]
+  home = ["html", "rss", "json"]
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"

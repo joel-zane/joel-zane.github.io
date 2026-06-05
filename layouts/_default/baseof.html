@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="{{ .Lang }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,21 +26,17 @@
     <meta name="theme-color" content="#4ade80">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="一期一会">
+    <meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}">
     <link rel="apple-touch-icon" href="/images/icon-192.png">
 </head>
 <body>
     <div class="container">
         <nav class="nav">
-            <a href="/" class="nav-logo">一期一会.</a>
+            <a href="{{ .Site.Home.RelPermalink }}" class="nav-logo">{{ .Site.Title }}.</a>
             <div class="nav-links">
-                <a href="/" {{ if .IsHome }}class="active"{{ end }}>首页</a>
-                <a href="/posts/" {{ if eq .Section "posts" }}class="active"{{ end }}>博客</a>
-                <a href="/projects/" {{ if eq .Section "projects" }}class="active"{{ end }}>项目</a>
-                <a href="/gallery/" {{ if eq .Section "gallery" }}class="active"{{ end }}>画廊</a>
-                <a href="/timeline/" {{ if eq .Section "timeline" }}class="active"{{ end }}>时间线</a>
-                <a href="/tools/" {{ if eq .Section "tools" }}class="active"{{ end }}>工具</a>
-                <a href="/about/" {{ if eq .Section "about" }}class="active"{{ end }}>关于</a>
+                {{ range .Site.Menus.main }}
+                    <a href="{{ .URL }}" {{ if $.IsMenuCurrent "main" . }}class="active"{{ end }}>{{ .Name }}</a>
+                {{ end }}
                 <!-- 语言切换 -->
                 <span style="color:#333;margin:0 5px;">|</span>
                 {{ if .IsTranslated }}
@@ -48,7 +44,11 @@
                         <a href="{{ .Permalink }}" style="font-size:0.85rem;">{{ .Language.Label }}</a>
                     {{ end }}
                 {{ else }}
-                    <a href="/en/" style="font-size:0.85rem;">English</a>
+                    {{ if eq .Lang "zh" }}
+                        <a href="/en/" style="font-size:0.85rem;">English</a>
+                    {{ else }}
+                        <a href="/" style="font-size:0.85rem;">中文</a>
+                    {{ end }}
                 {{ end }}
             </div>
         </nav>
