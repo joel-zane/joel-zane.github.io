@@ -5,3 +5,24 @@
   --waline-theme-color: #4ade80;
   --waline-active-color: #22c55e;
 }
+
+/* Dark mode variables for Waline v3 */
+html:not([data-theme="light"]) [data-waline] {
+  --waline-theme-color: #4ade80;
+  --waline-active-color: #22c55e;
+  --waline-color: #ccc;
+  --waline-bg-color: #161616;
+  --waline-bg-color-light: #1e1e1e;
+  --waline-bg-color-hover: #252525;
+  --waline-border-color: #333;
+  --waline-disable-bg-color: #1e1e1e;
+  --waline-disable-color: #555;
+  --waline-bq-color: #333;
+  --waline-badge-color: #4ade80;
+  --waline-info-bg-color: #1e1e1e;
+  --waline-info-color: #888;
+  --waline-white: #eee;
+  --waline-light-grey: #888;
+  --waline-dark-grey: #aaa;
+  --waline-box-shadow: none;
+}
