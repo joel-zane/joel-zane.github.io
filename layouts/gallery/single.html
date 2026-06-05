@@ -31,6 +31,9 @@
             <h3 id="lightbox-title"></h3>
             <p id="lightbox-desc"></p>
         </div>
+        <div id="lightbox-comments" class="lightbox-comments">
+            <div id="waline-gallery"></div>
+        </div>
     </div>
 </div>
 
@@ -45,19 +48,22 @@
     background: rgba(0,0,0,0.95);
     z-index: 9999;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    overflow-y: auto;
+    padding: 40px 20px;
 }
 .lightbox.active {
     display: flex;
 }
 .lightbox-content {
-    max-width: 90vw;
-    max-height: 85vh;
+    max-width: 900px;
+    width: 100%;
     text-align: center;
+    margin: 0 auto;
 }
 .lightbox-content img {
     max-width: 100%;
-    max-height: 80vh;
+    max-height: 70vh;
     object-fit: contain;
     border-radius: 4px;
 }
@@ -67,12 +73,19 @@
 }
 .lightbox-caption h3 {
     color: #4ade80;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 5px;
 }
 .lightbox-caption p {
-    font-size: 14px;
+    font-size: 15px;
     color: #999;
+}
+.lightbox-comments {
+    margin-top: 30px;
+    text-align: left;
+    background: rgba(20,20,20,0.9);
+    border-radius: 8px;
+    padding: 20px;
 }
 .lightbox-close {
     position: fixed;
@@ -103,9 +116,13 @@
 .gallery-card { cursor: pointer; }
 </style>
 
-<script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<script type="module">
+import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+
 const galleryData = {{ $gallery }};
 let currentIndex = 0;
+let walineInstance = null;
 
 function openLightbox(index) {
     currentIndex = index;
@@ -126,6 +143,22 @@ function updateLightbox() {
     document.getElementById('lightbox-img').src = item.image;
     document.getElementById('lightbox-title').textContent = item.title;
     document.getElementById('lightbox-desc').textContent = item.description || '';
+
+    // Update Waline comments for this image
+    const walineEl = document.getElementById('waline-gallery');
+    walineEl.innerHTML = '';
+    walineInstance = init({
+        el: '#waline-gallery',
+        serverURL: '/api/waline',
+        path: '/gallery/' + item.image.split('/').pop().replace('.jpg', ''),
+        dark: true,
+        lang: '{{ .Lang }}',
+        meta: ['nick', 'mail'],
+        requiredMeta: [],
+        login: 'disable',
+        pageview: false,
+        comment: true,
+    });
 }
 
 function prevImage(e) {
