@@ -17,7 +17,7 @@
             </li>
             {{ end }}
         </ul>
-        <a href="/posts/" class="view-all">{{ i18n "viewAll" }}</a>
+        <a href="{{ "posts/" | relLangURL }}" class="view-all">{{ i18n "viewAll" }}</a>
 
         {{ if .Site.Params.busuanzi }}
         <div class="stats">
@@ -44,15 +44,15 @@
             {{ end }}
             {{ end }}
         </ul>
-        <a href="/projects/" class="view-all">{{ i18n "viewAllProjects" }}</a>
+        <a href="{{ "projects/" | relLangURL }}" class="view-all">{{ i18n "viewAllProjects" }}</a>
 
         <h2 class="section-title"># {{ i18n "quickNav" }}</h2>
         <ul class="nav-list">
-            <li><a href="/posts/">{{ if eq .Lang "en" }}Blog{{ else }}博客{{ end }}</a></li>
-            <li><a href="/projects/">{{ if eq .Lang "en" }}Projects{{ else }}项目{{ end }}</a></li>
-            <li><a href="/gallery/">{{ if eq .Lang "en" }}Gallery{{ else }}画廊{{ end }}</a></li>
-            <li><a href="/timeline/">{{ if eq .Lang "en" }}Timeline{{ else }}时间线{{ end }}</a></li>
-            <li><a href="/about/">{{ if eq .Lang "en" }}About{{ else }}关于{{ end }}</a></li>
+            <li><a href="{{ "posts/" | relLangURL }}">{{ if eq .Lang "en" }}Blog{{ else }}博客{{ end }}</a></li>
+            <li><a href="{{ "projects/" | relLangURL }}">{{ if eq .Lang "en" }}Projects{{ else }}项目{{ end }}</a></li>
+            <li><a href="{{ "gallery/" | relLangURL }}">{{ if eq .Lang "en" }}Gallery{{ else }}画廊{{ end }}</a></li>
+            <li><a href="{{ "timeline/" | relLangURL }}">{{ if eq .Lang "en" }}Timeline{{ else }}时间线{{ end }}</a></li>
+            <li><a href="{{ "about/" | relLangURL }}">{{ if eq .Lang "en" }}About{{ else }}关于{{ end }}</a></li>
         </ul>
     </div>
 </section>
