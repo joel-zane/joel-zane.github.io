@@ -1,38 +1,302 @@
 [
   {
-    "title": "Tokyo Tower",
-    "description": "Iconic landmark of Tokyo, Japan",
-    "image": "/images/gallery/tokyo-tower.jpg",
-    "date": "2025-12-15"
+    "title": "Anthony Edwards Jump Shot",
+    "description": "Exciting moment on the NBA court",
+    "image": "/images/gallery/img_7ee6fbad2bf2.jpg",
+    "date": "2026-06-05"
   },
   {
-    "title": "Cherry Blossoms",
-    "description": "Spring cherry blossoms in full bloom",
-    "image": "/images/gallery/sakura.jpg",
-    "date": "2025-04-01"
+    "title": "Edwards Overhead View",
+    "description": "Unique overhead perspective shot",
+    "image": "/images/gallery/img_bddb88822431.jpg",
+    "date": "2026-06-05"
   },
   {
-    "title": "Coding",
-    "description": "Late night coding session",
-    "image": "/images/gallery/coding.jpg",
-    "date": "2026-03-20"
+    "title": "Ducks Playing in Water",
+    "description": "Two ducks on the water surface",
+    "image": "/images/gallery/img_d790fc09f3c9.jpg",
+    "date": "2026-06-05"
   },
   {
-    "title": "Basketball",
-    "description": "NBA game highlights",
-    "image": "/images/gallery/basketball.jpg",
-    "date": "2026-01-10"
+    "title": "Night Bridge Lights",
+    "description": "Night lights and bridge reflections",
+    "image": "/images/gallery/img_29faaab2f78f.jpg",
+    "date": "2026-06-05"
   },
   {
-    "title": "Anime",
-    "description": "Favorite anime screenshots",
-    "image": "/images/gallery/anime.jpg",
-    "date": "2025-08-05"
+    "title": "Tuxedo Cat",
+    "description": "Cute black and white cat",
+    "image": "/images/gallery/img_58a04ec8cd76.jpg",
+    "date": "2026-06-05"
   },
   {
-    "title": "Campus",
-    "description": "Beautiful campus scenery",
-    "image": "/images/gallery/campus.jpg",
-    "date": "2026-05-01"
+    "title": "Night Cat",
+    "description": "Orange cat under street light",
+    "image": "/images/gallery/img_46e8b682ff85.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Waterfowl",
+    "description": "Mallard and white ducks swimming together",
+    "image": "/images/gallery/img_b04f15ccb883.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Matching Rings",
+    "description": "Two hands, a pair of rings",
+    "image": "/images/gallery/img_3e067c8f55a3.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Bamboo Forest Gaze",
+    "description": "Looking up at bamboo forest and sky",
+    "image": "/images/gallery/img_e7ac0c9be86a.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Spider-Man Glitch",
+    "description": "Funny game clipping bug",
+    "image": "/images/gallery/img_60200ec14c68.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Golden Cloud Sea",
+    "description": "Magnificent cumulus clouds at sunset",
+    "image": "/images/gallery/img_0559ff4cc92a.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Rooftop Spider-Man",
+    "description": "Figure photography with night scenery",
+    "image": "/images/gallery/img_32e43abdad20.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Power Lines & Sunset",
+    "description": "Where industry meets nature",
+    "image": "/images/gallery/img_f06f27d4f161.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Black & White Basketball",
+    "description": "Vintage style basketball portrait",
+    "image": "/images/gallery/img_87ee23a03c90.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Jordan Brand",
+    "description": "Jaden Smith × Jordan collaboration",
+    "image": "/images/gallery/img_266753e9f34c.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Pastoral Landscape",
+    "description": "Vast green rice paddies",
+    "image": "/images/gallery/img_c68e94707d71.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Tokyo Tower Looking Up",
+    "description": "Looking up at Tokyo Tower from below",
+    "image": "/images/gallery/img_60038f820a2f.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Volcano & Sea",
+    "description": "Volcano silhouette at dusk",
+    "image": "/images/gallery/img_22a157972f9b.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Tokyo Tower & Park",
+    "description": "Tokyo Tower in the distance under sunlight",
+    "image": "/images/gallery/img_087e6e519e55.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Seaside Town",
+    "description": "Overlooking a Japanese coastal town",
+    "image": "/images/gallery/img_2d80e859a2a9.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Coastal Cliffs",
+    "description": "Blue sea and sky along the coastline",
+    "image": "/images/gallery/img_946f26e1be33.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "City at Dusk",
+    "description": "Sunset at Hotel Kuretakeso",
+    "image": "/images/gallery/img_ec05c5ee6102.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Beef Bowl Set Meal",
+    "description": "Japanese lunch set",
+    "image": "/images/gallery/img_63836ef60cae.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Osaka Castle",
+    "description": "Looking up at Osaka Castle tower",
+    "image": "/images/gallery/img_9dfd5f5e8d9d.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Kinkaku-ji",
+    "description": "Golden Pavilion reflecting in water, Kyoto",
+    "image": "/images/gallery/img_a4a022df9309.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Castle Moat",
+    "description": "Ancient stone walls and blue water",
+    "image": "/images/gallery/img_83b0ec8b8500.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Mountain Trail",
+    "description": "Green mountains stretching into the distance",
+    "image": "/images/gallery/img_b4c4b1110fa9.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Night Bokeh",
+    "description": "Defocused city night lights",
+    "image": "/images/gallery/img_0becdbea0a23.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "City Skyline",
+    "description": "Chinese city business district",
+    "image": "/images/gallery/img_c6d1c5bfd35a.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "City Streets",
+    "description": "Tree-lined urban road",
+    "image": "/images/gallery/img_214c8bf26444.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Life is Futile",
+    "description": "\"Life is an endless, futile struggle\"",
+    "image": "/images/gallery/img_a719359ac7bd.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Night Talk",
+    "description": "\"This is our kind of freedom\"",
+    "image": "/images/gallery/img_91ba75dfd5d9.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Twilight Hour",
+    "description": "Your Name - the twilight hour",
+    "image": "/images/gallery/img_0199340d60a5.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Samurai Champloo",
+    "description": "Samurai Champloo four-panel collage",
+    "image": "/images/gallery/img_e75ba4d27906.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Root of All Evil",
+    "description": "\"Placing hope in other possibilities is the root of all evil\"",
+    "image": "/images/gallery/img_f0427e871a08.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Canal & Power Lines",
+    "description": "Serene canal scenery",
+    "image": "/images/gallery/img_aec17f73e1a3.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "5 Centimeters Per Second",
+    "description": "\"We cannot change the world\"",
+    "image": "/images/gallery/img_1dd1a89c5204.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Jump Shot",
+    "description": "Jump shot moment at an outdoor basketball court",
+    "image": "/images/gallery/img_dc3c51a62119.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Tower of Buddhist Incense",
+    "description": "Looking up at the Tower in the Summer Palace",
+    "image": "/images/gallery/img_0c701e831c5e.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Standing Alone in Fog",
+    "description": "Lonely silhouette from an anime scene",
+    "image": "/images/gallery/img_c40be327be67.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Kobe",
+    "description": "Kobe Bryant in contemplation on the court",
+    "image": "/images/gallery/img_4f4641c8c9e3.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Curious Cat",
+    "description": "Cat looking up at night",
+    "image": "/images/gallery/img_586269cc4396.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Jump Shot Silhouette",
+    "description": "Jump shot silhouette at a city basketball court",
+    "image": "/images/gallery/img_4f4f7d0d8682.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Hallway Celebration",
+    "description": "Youth in a #24 jersey celebrating",
+    "image": "/images/gallery/img_03266a498d02.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Twilight Overpass",
+    "description": "City walkway at dusk",
+    "image": "/images/gallery/img_6f9abd0409a2.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Line Art Girl",
+    "description": "Ink line manga illustration",
+    "image": "/images/gallery/img_a92cd1a8b690.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Blue Line Portrait",
+    "description": "Bold sketch-style portrait",
+    "image": "/images/gallery/img_0302b2f6cd2b.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "The Last Warmth",
+    "description": "Attack on Titan - the final scene",
+    "image": "/images/gallery/img_cca0191a0b3b.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "Digital Glitch",
+    "description": "Cyberpunk style portrait",
+    "image": "/images/gallery/img_daad19ee5846.jpg",
+    "date": "2026-06-05"
+  },
+  {
+    "title": "London Night",
+    "description": "Westminster Bridge long exposure in black and white",
+    "image": "/images/gallery/img_ec9d038a3436.jpg",
+    "date": "2026-06-05"
   }
 ]
