@@ -85,6 +85,11 @@ copyright = "© 2026 Joel Zane"
   url = "/guestbook/"
   weight = 8
 
+[[languages.zh.menu.main]]
+  name = "开源"
+  url = "/opensource/"
+  weight = 9
+
 # 英文菜单
 [[languages.en.menu.main]]
   name = "Home"
@@ -125,6 +130,11 @@ copyright = "© 2026 Joel Zane"
   name = "Guestbook"
   url = "/en/guestbook/"
   weight = 8
+
+[[languages.en.menu.main]]
+  name = "Open Source"
+  url = "/en/opensource/"
+  weight = 9
 
 [pagination]
   pagerSize = 10
