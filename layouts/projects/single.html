@@ -17,5 +17,8 @@
     <div class="body">
         {{ .Content }}
     </div>
+    {{ if not .Params.disable_comments }}
+    {{- partial "comments.html" . -}}
+    {{ end }}
 </article>
 {{ end }}
