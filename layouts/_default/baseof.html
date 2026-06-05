@@ -45,6 +45,8 @@
                     <a href="{{ if .IsTranslated }}{{ range .Translations }}{{ .RelPermalink }}{{ end }}{{ else }}/{{ end }}" 
                        class="lang-switch" title="切换到中文">中</a>
                 {{ end }}
+                <!-- 主题切换 -->
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
             </div>
         </nav>
 
@@ -104,6 +106,29 @@
     </script>
     {{ end }}
     
+    <!-- Theme Toggle Script -->
+    <script>
+    function toggleTheme() {
+        const html = document.documentElement;
+        const current = html.getAttribute('data-theme');
+        const next = current === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateThemeIcon(next);
+    }
+    function updateThemeIcon(theme) {
+        const btn = document.querySelector('.theme-toggle');
+        if (btn) btn.textContent = theme === 'light' ? '☀️' : '🌙';
+    }
+    (function() {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (prefersDark ? 'dark' : 'dark'); // default dark
+        document.documentElement.setAttribute('data-theme', theme);
+        updateThemeIcon(theme);
+    })();
+    </script>
+
     <!-- Service Worker Registration -->
     <script>
     if ('serviceWorker' in navigator) {

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404 | 一期一会</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Long+Cang&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <a href="/" class="nav-logo">一期一会.</a>
+            <div class="nav-links">
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+            </div>
+        </nav>
+
+        <div class="error-page">
+            <div class="error-code">404</div>
+            <h1>页面走丢了</h1>
+            <p>你访问的页面不存在，可能是链接有误或页面已被移除。</p>
+            <a href="/" class="back-home">← 回到首页</a>
+        </div>
+
+        <footer class="footer">
+            <div>© 2026 Joel Zane. All rights reserved.</div>
+        </footer>
+    </div>
+
+    <script>
+    function toggleTheme() {
+        const html = document.documentElement;
+        const current = html.getAttribute('data-theme');
+        const next = current === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateThemeIcon(next);
+    }
+    function updateThemeIcon(theme) {
+        const btn = document.querySelector('.theme-toggle');
+        if (btn) btn.textContent = theme === 'light' ? '☀️' : '🌙';
+    }
+    (function() {
+        const saved = localStorage.getItem('theme');
+        const theme = saved || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        updateThemeIcon(theme);
+    })();
+    </script>
+</body>
+</html>
