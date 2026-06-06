@@ -159,18 +159,37 @@
 .music-panel .aplayer .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played{background:#a8b4c0!important}
 .music-panel .aplayer .aplayer-controller .aplayer-time{color:#888!important}
 .music-panel .aplayer .aplayer-icon{color:#a8b4c0!important}
+/* 亮色覆盖 */
+[data-theme="light"] .music-panel{background:#fff!important;border-color:#e0e0e0!important;box-shadow:0 8px 32px rgba(0,0,0,.15)!important}
+[data-theme="light"] .music-panel-header{border-bottom-color:#e0e0e0!important}
+[data-theme="light"] .music-panel-header h3{color:#333!important}
+[data-theme="light"] .music-panel-header .close-btn{color:#666!important}
+[data-theme="light"] .music-panel-header .close-btn:hover{color:#111!important}
+[data-theme="light"] .music-toggle.active{background:#f5f5f5!important;color:#a8b4c0!important;border-color:#a8b4c0!important}
+[data-theme="light"] .music-panel .aplayer{background:#fff!important}
+[data-theme="light"] .music-panel .aplayer .aplayer-info{border-bottom-color:#eee!important}
+[data-theme="light"] .music-panel .aplayer .aplayer-info .aplayer-music .aplayer-title{color:#111!important}
+[data-theme="light"] .music-panel .aplayer .aplayer-info .aplayer-music .aplayer-author{color:#666!important}
+[data-theme="light"] .music-panel .aplayer .aplayer-list ol li{border-bottom-color:#eee!important}
+[data-theme="light"] .music-panel .aplayer .aplayer-list ol li:hover{background:#f5f5f5!important}
+[data-theme="light"] .music-panel .aplayer .aplayer-list ol li.aplayer-list-light{background:#f5f5f5!important}
+[data-theme="light"] .music-panel .aplayer .aplayer-list ol li .aplayer-list-title{color:#111!important}
+[data-theme="light"] .music-panel .aplayer .aplayer-list ol li .aplayer-list-author{color:#666!important}
+[data-theme="light"] .music-panel .aplayer .aplayer-controller .aplayer-bar-wrap .aplayer-bar{background:#ddd!important}
+[data-theme="light"] .music-panel .aplayer .aplayer-controller .aplayer-time{color:#666!important}
+[data-theme="light"] .music-panel .aplayer .aplayer-icon{color:#666!important}
 /* 手机端 */
 @media(max-width:480px){
   .music-panel{right:8px;left:8px;width:auto!important;bottom:75px;max-height:60vh}
   .music-toggle{right:12px!important;bottom:12px!important;width:48px!important;height:48px!important;font-size:22px!important}
 }
-/* 手机端评论区强制暗色 */
+/* 手机端评论区样式 */
 @media(max-width:768px){
   [data-waline] *,[data-waline]{background-color:inherit}
-  #waline,#waline *{color:#ccc!important}
-  #waline .wl-panel{background:#161616!important;border-color:#333!important}
-  #waline .wl-editor,#waline .wl-input{background:#111!important;color:#ccc!important}
-  #waline .wl-btn{background:transparent!important;color:#ccc!important;border-color:#444!important}
+  #waline,#waline *{color:var(--waline-color)!important}
+  #waline .wl-panel{background:var(--waline-bg-color)!important;border-color:var(--waline-border-color)!important}
+  #waline .wl-editor,#waline .wl-input{background:var(--waline-bg-color-light)!important;color:var(--waline-color)!important}
+  #waline .wl-btn{background:transparent!important;color:var(--waline-color)!important;border-color:var(--waline-border-color)!important}
   #waline .wl-btn.primary{background:#a8b4c0!important;color:#0d0d0d!important}
 }
 </style>

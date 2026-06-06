@@ -56,10 +56,10 @@
 
 <style>
 /* 工具栏 */
-.gallery-toolbar{display:flex;justify-content:space-between;align-items:center;padding:10px 0;margin-bottom:10px;border-bottom:1px solid #222}
-.gallery-count{color:#888;font-size:.9rem}
+.gallery-toolbar{display:flex;justify-content:space-between;align-items:center;padding:10px 0;margin-bottom:10px;border-bottom:1px solid var(--border,#222)}
+.gallery-count{color:var(--text-muted,#888);font-size:.9rem}
 .gallery-layouts{display:flex;gap:6px}
-.layout-btn{width:32px;height:32px;border:1px solid #333;border-radius:6px;background:transparent;color:#888;font-size:.8rem;font-weight:bold;cursor:pointer;transition:all .2s}
+.layout-btn{width:32px;height:32px;border:1px solid var(--border,#333);border-radius:6px;background:transparent;color:var(--text-muted,#888);font-size:.8rem;font-weight:bold;cursor:pointer;transition:all .2s}
 .layout-btn:hover{border-color:#a8b4c0;color:#a8b4c0}
 .layout-btn.active{background:#a8b4c0;color:#0d0d0d;border-color:#a8b4c0}
 
@@ -86,8 +86,8 @@
 .gallery-card img{width:100%;height:200px;object-fit:cover;display:block}
 .gallery-card .info{padding:16px}
 .gallery-card .info h3{font-size:1.05rem;margin-bottom:4px}
-.gallery-card .info p{color:#888;font-size:.9rem}
-.gallery-card time{display:block;font-size:.8rem;color:#666;margin-top:6px}
+.gallery-card .info p{color:var(--text-muted,#888);font-size:.9rem}
+.gallery-card time{display:block;font-size:.8rem;color:var(--text-muted,#666);margin-top:6px}
 #lb-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:9999;overflow-y:auto;padding:40px 20px}
 #lb-overlay.active{display:block}
 .lb-body{max-width:900px;width:100%;text-align:center;margin:0 auto}
