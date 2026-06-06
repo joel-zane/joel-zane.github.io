@@ -200,7 +200,7 @@ function updateLightbox() {
     if (window.__waline_init) {
         window.__waline_init({
             el: '#waline-gallery',
-            serverURL: '/api/waline',
+            serverURL: 'http://40.233.72.74/api/waline',
             path: '/gallery/' + item.image.split('/').pop().replace('.jpg', ''),
             dark: 'html:not([data-theme="light"])',
             lang: '{{ .Lang }}',
