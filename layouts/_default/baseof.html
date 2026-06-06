@@ -235,7 +235,7 @@ function loadPlaylist(id){
   el.setAttribute('server','tencent');
   el.setAttribute('type','playlist');
   el.setAttribute('id',id);
-  el.setAttribute('api','https://api.injahow.cn/meting/');
+  el.setAttribute('api','https://api.injahow.cn/meting/?server=:server&type=:type&id=:id');
   el.setAttribute('mutex','true');
   el.setAttribute('preload','auto');
   el.setAttribute('volume','0.7');
