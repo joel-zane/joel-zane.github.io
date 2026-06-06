@@ -271,13 +271,95 @@ var checkInterval=setInterval(function(){
 },1000);
 </script>
 
-<!-- Service Worker Registration -->
-    <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('SW registered:', reg.scope))
-        .catch(err => console.log('SW registration failed:', err));
+<!-- Pjax: 无刷新页面切换 (音乐播放器不中断) -->
+<div id="pjax-badge" style="position:fixed;top:5px;left:5px;background:#a8b4c0;color:#0d0d0d;padding:3px 8px;border-radius:3px;font-size:11px;z-index:999999;font-family:monospace;cursor:pointer" onclick="this.style.display='none'">SPA ON</div>
+<script>
+(function(){
+  var c = document.querySelector('.container');
+  if (!c) return;
+
+  // 进度条
+  var bar = document.createElement('div');
+  bar.style.cssText = 'position:fixed;top:0;left:0;height:2px;background:#a8b4c0;z-index:999999;width:0;transition:width 0.3s';
+  document.body.appendChild(bar);
+
+  function ok(a) {
+    if (!a || !a.href) return false;
+    if (a.target === '_blank' || a.hasAttribute('download')) return false;
+    if (a.hostname !== location.hostname) return false;
+    if (a.pathname === location.pathname && a.hash) return false;
+    if (/\.(zip|tar|gz|pdf|mp3|mp4|wav|ogg)$/i.test(a.pathname)) return false;
+    return true;
+  }
+
+  function runScripts(el) {
+    var ss = el.querySelectorAll('script');
+    for (var i = 0; i < ss.length; i++) {
+      var ns = document.createElement('script');
+      for (var j = 0; j < ss[i].attributes.length; j++)
+        ns.setAttribute(ss[i].attributes[j].name, ss[i].attributes[j].value);
+      if (ss[i].textContent) ns.textContent = ss[i].textContent;
+      ss[i].parentNode.replaceChild(ns, ss[i]);
     }
-    </script>
+  }
+
+  function go(url, push) {
+    bar.style.width = '30%';
+    var badge = document.getElementById('pjax-badge');
+    if (badge) { badge.textContent = 'LOADING...'; badge.style.background = '#f0ad4e'; }
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url + (url.indexOf('?') >= 0 ? '&' : '?') + '_pjax=1', true);
+    xhr.setRequestHeader('X-PJAX', 'true');
+    xhr.onload = function() {
+      if (xhr.status >= 200 && xhr.status < 300) {
+        bar.style.width = '80%';
+        var doc = new DOMParser().parseFromString(xhr.responseText, 'text/html');
+        var nc = doc.querySelector('.container');
+        if (nc) {
+          c.innerHTML = nc.innerHTML;
+          runScripts(c);
+          var t = doc.querySelector('title');
+          if (t) document.title = t.textContent;
+          if (push !== false) history.pushState({u: url}, '', url);
+          window.scrollTo(0, 0);
+          if (typeof loadSearchData === 'function') try{loadSearchData()}catch(e){}
+          bar.style.width = '100%';
+          setTimeout(function(){bar.style.width='0'},300);
+          if (badge) { badge.textContent = 'SPA ON'; badge.style.background = '#a8b4c0'; }
+        } else { if (badge) { badge.textContent = 'FALLBACK'; badge.style.background = '#d9534f'; } location.href = url; }
+      } else { location.href = url; }
+    };
+    xhr.onerror = function() { if (badge) { badge.textContent = 'ERROR'; badge.style.background = '#d9534f'; } location.href = url; };
+    xhr.send();
+  }
+
+  // 拦截点击
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a');
+    if (!a || !ok(a)) return;
+    e.preventDefault();
+    e.stopPropagation();
+    go(a.href);
+  });
+
+  // 浏览器前进/后退
+  window.addEventListener('popstate', function(e) {
+    go(e.state && e.state.u ? e.state.u : location.href, false);
+  });
+
+  // 初始化 history state
+  history.replaceState({u: location.href}, '', location.href);
+})();
+</script>
+
+<!-- Service Worker: 自卸载清除旧缓存 -->
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistration().then(function(reg) {
+    if (reg) reg.unregister();
+  });
+  if (window.caches) caches.keys().then(function(n){n.forEach(function(k){caches.delete(k)})});
+}
+</script>
 </body>
 </html>
