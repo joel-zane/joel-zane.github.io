@@ -49,6 +49,7 @@
   init({
     el: '#waline',
     serverURL: 'http://40.233.72.74/api/waline',
+    path: '/guestbook/',
     lang: '{{ if eq .Lang "en" }}en{{ else }}zh-CN{{ end }}',
     dark: 'html:not([data-theme="light"])',
     meta: ['nick', 'mail'],

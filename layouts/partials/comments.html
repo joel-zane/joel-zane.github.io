@@ -40,9 +40,12 @@
     var el = document.getElementById('waline');
     if (!el) return;
     el.innerHTML = '';
+    // 中英文共用路径：去掉 /en/ 前缀
+    var p = location.pathname.replace(/^\/en\//, '/');
     walineInstance = init({
       el: '#waline',
       serverURL: 'http://40.233.72.74/api/waline',
+      path: p,
       lang: '{{ if eq .Lang "en" }}en{{ else }}zh-CN{{ end }}',
       dark: 'html:not([data-theme="light"])',
       meta: ['nick', 'mail'],
@@ -57,12 +60,13 @@
   window.__reinitWaline = function() {
     var el = document.getElementById('waline');
     if (!el) return;
-    // Detect lang from URL
     var lang = location.pathname.startsWith('/en/') ? 'en' : 'zh-CN';
+    var p = location.pathname.replace(/^\/en\//, '/');
     el.innerHTML = '';
     walineInstance = init({
       el: '#waline',
       serverURL: 'http://40.233.72.74/api/waline',
+      path: p,
       lang: lang,
       dark: 'html:not([data-theme="light"])',
       meta: ['nick', 'mail'],
