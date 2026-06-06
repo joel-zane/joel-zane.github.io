@@ -1,18 +1,76 @@
 <!-- Waline 评论 -->
 <link rel="stylesheet" href="/css/waline.css?v=1780653157" />
-<div id="waline" style="margin-top:3rem;padding-top:2rem;border-top:1px solid #333;"></div>
+<style>
+/* Waline 亮色模式覆盖（必须在 waline.css 之后加载） */
+[data-theme="light"] {
+  --waline-color: #333;
+  --waline-white: #111;
+  --waline-light-grey: #666;
+  --waline-dark-grey: #333;
+  --waline-bg-color: #ffffff;
+  --waline-bg-color-light: #f5f5f5;
+  --waline-bg-color-hover: #eaeaea;
+  --waline-border-color: #e0e0e0;
+  --waline-info-bg-color: #f0f0f0;
+  --waline-info-color: #666;
+  --waline-bq-color: #e0e0e0;
+  --waline-disable-bg-color: #f0f0f0;
+  --waline-disable-color: #999;
+  --waline-code-bg-color: #f5f5f5;
+}
+[data-theme="light"] .wl-panel { background: var(--waline-bg-color) !important; border-color: var(--waline-border-color) !important; }
+[data-theme="light"] .wl-editor, [data-theme="light"] .wl-input { background: var(--waline-bg-color-light) !important; color: var(--waline-color) !important; border-color: var(--waline-border-color) !important; }
+[data-theme="light"] .wl-btn { background: transparent !important; color: var(--waline-color) !important; border-color: var(--waline-border-color) !important; }
+[data-theme="light"] .wl-card { border-bottom-color: var(--waline-border-color) !important; }
+[data-theme="light"] .wl-card .wl-nick { color: var(--waline-white) !important; }
+[data-theme="light"] .wl-card .wl-content { color: var(--waline-color) !important; }
+[data-theme="light"] .wl-count { color: var(--waline-white) !important; }
+[data-theme="light"] .wl-sort li { color: var(--waline-info-color) !important; }
+[data-theme="light"] .wl-sort li.active { color: #a8b4c0 !important; }
+[data-theme="light"] .wl-card .wl-meta > span { background: var(--waline-info-bg-color) !important; color: var(--waline-info-color) !important; }
+[data-theme="light"] .wl-card .wl-time { color: var(--waline-info-color) !important; }
+[data-theme="light"] .wl-empty { color: var(--waline-color) !important; }
+[data-theme="light"] .wl-power { color: var(--waline-light-grey) !important; }
+</style>
+<div id="waline" style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border,#333);"></div>
 <script type="module">
   import { init } from '/js/waline.js?v=1780653157';
-  init({
-    el: '#waline',
-    serverURL: 'http://40.233.72.74/api/waline',
-    lang: '{{ if eq .Lang "en" }}en{{ else }}zh-CN{{ end }}',
-    dark: 'html:not([data-theme="light"])',
-    meta: ['nick', 'mail'],
-    requiredMeta: ['nick'],
-    login: 'disable',
-    wordLimit: 500,
-    pageview: true,
-    comment: true,
-  });
+  var walineInstance = null;
+  function initWaline() {
+    var el = document.getElementById('waline');
+    if (!el) return;
+    el.innerHTML = '';
+    walineInstance = init({
+      el: '#waline',
+      serverURL: 'http://40.233.72.74/api/waline',
+      lang: '{{ if eq .Lang "en" }}en{{ else }}zh-CN{{ end }}',
+      dark: 'html:not([data-theme="light"])',
+      meta: ['nick', 'mail'],
+      requiredMeta: ['nick'],
+      login: 'disable',
+      wordLimit: 500,
+      pageview: true,
+      comment: true,
+    });
+  }
+  initWaline();
+  window.__reinitWaline = function() {
+    var el = document.getElementById('waline');
+    if (!el) return;
+    // Detect lang from URL
+    var lang = location.pathname.startsWith('/en/') ? 'en' : 'zh-CN';
+    el.innerHTML = '';
+    walineInstance = init({
+      el: '#waline',
+      serverURL: 'http://40.233.72.74/api/waline',
+      lang: lang,
+      dark: 'html:not([data-theme="light"])',
+      meta: ['nick', 'mail'],
+      requiredMeta: ['nick'],
+      login: 'disable',
+      wordLimit: 500,
+      pageview: true,
+      comment: true,
+    });
+  };
 </script>

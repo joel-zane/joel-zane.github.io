@@ -380,6 +380,8 @@ var checkInterval=setInterval(function(){
         if (nc) {
           c.innerHTML = nc.innerHTML;
           runScripts(c);
+          // Re-init Waline after Pjax (module scripts may not re-execute)
+          if (typeof window.__reinitWaline === 'function') try{window.__reinitWaline()}catch(e){}
           var t = doc.querySelector('title');
           if (t) document.title = t.textContent;
           if (push !== false) history.pushState({u: url}, '', url);
