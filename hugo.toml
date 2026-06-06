@@ -42,6 +42,7 @@ copyright = "© 2026 Joel Zane"
     label = "English"
     title = "Yi Qi Yi Hui"
     weight = 2
+    missingContentTranslationFile = true
     [languages.en.params]
       subtitle = "A personal blog about AI, tech and life"
 

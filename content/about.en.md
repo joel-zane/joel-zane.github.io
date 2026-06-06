@@ -5,11 +5,11 @@ type: "page"
 
 # About Me
 
-**Zhang Zhaoyuan / Joel Zane**
+**张钊远 / Joel Zane**
 
-Beijing Forestry University · Electronic Information Science and Technology
+北京林业大学 · 电子信息科学与技术专业
 
-Passionate about AI and technology, love to create interesting things with code and design, recording the bits of learning and life.
+对 AI 和技术充满好奇，喜欢用代码和设计创造有趣的东西，记录学习与生活的点滴。
 
 ## # Interests
 
