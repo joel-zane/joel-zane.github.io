@@ -1,28 +1,109 @@
 <!-- 搜索功能 -->
-<div id="search-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:2000;overflow-y:auto;">
+<div id="search-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:2000;overflow-y:auto;-webkit-overflow-scrolling:touch;">
     <div style="max-width:600px;margin:50px auto;padding:20px;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-            <h2 style="color:#a8b4c0;font-size:1.5rem;">{{ i18n "search" }}</h2>
-            <button onclick="closeSearch()" style="background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;">✕</button>
+            <h2 style="color:#a8b4c0;font-size:1.5rem;margin:0;">{{ i18n "search" }}</h2>
+            <button onclick="closeSearch()" style="background:none;border:none;color:white;font-size:1.5rem;cursor:pointer;padding:8px;">✕</button>
         </div>
-        
-        <input type="text" id="search-input" placeholder="{{ i18n "searchPlaceholder" }}" 
-            style="width:100%;padding:15px;background:#161616;border:1px solid #222;border-radius:8px;color:white;font-size:1rem;margin-bottom:20px;"
-            oninput="performSearch(this.value)">
-        
-        <div id="search-results"></div>
+
+        <div style="position:relative;margin-bottom:16px;">
+            <input type="text" id="search-input" placeholder="{{ i18n "searchPlaceholder" }}"
+                style="width:100%;padding:15px 50px 15px 15px;background:#161616;border:1px solid #222;border-radius:8px;color:white;font-size:1rem;box-sizing:border-box;outline:none;transition:border-color 0.2s;"
+                oninput="performSearch(this.value)"
+                onfocus="this.style.borderColor='#a8b4c0'"
+                onblur="this.style.borderColor='#222'"
+                autocomplete="off"
+                spellcheck="false">
+            <span id="search-shortcut-hint" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#555;font-size:0.75rem;pointer-events:none;">ESC</span>
+        </div>
+
+        <div id="search-result-count" style="color:#666;font-size:0.85rem;margin-bottom:12px;display:none;"></div>
+        <div id="search-results" role="listbox" aria-label="Search results"></div>
+        <div id="search-nav-hint" style="display:none;color:#444;font-size:0.75rem;text-align:center;margin-top:12px;">
+            ↑↓ {{ i18n "navigateResults" }} · Enter {{ i18n "openResult" }}
+        </div>
     </div>
 </div>
 
 <!-- 搜索按钮 -->
-<button onclick="openSearch()" 
-    style="position:fixed;bottom:30px;right:90px;width:50px;height:50px;border-radius:50%;background:#161616;color:#a8b4c0;border:1px solid #222;cursor:pointer;z-index:1000;font-size:20px;">
+<button onclick="openSearch()" id="search-fab"
+    style="position:fixed;bottom:30px;right:90px;width:50px;height:50px;border-radius:50%;background:#161616;color:#a8b4c0;border:1px solid #222;cursor:pointer;z-index:1000;font-size:20px;display:flex;align-items:center;justify-content:center;transition:transform 0.2s,box-shadow 0.2s;"
+    aria-label="Search">
     🔍
 </button>
+
+<style>
+/* 移动端适配 */
+@media (max-width: 640px) {
+    #search-modal > div {
+        margin: 0 auto !important;
+        padding: 12px !important;
+        max-width: 100% !important;
+    }
+    #search-modal > div > div:first-child {
+        margin-bottom: 12px !important;
+    }
+    #search-fab {
+        bottom: 20px !important;
+        right: 20px !important;
+        width: 44px !important;
+        height: 44px !important;
+    }
+}
+
+/* 高亮匹配关键词 */
+.search-highlight {
+    background: rgba(168, 180, 192, 0.25);
+    color: #e0e0e0;
+    border-radius: 2px;
+    padding: 0 1px;
+}
+
+/* 键盘导航高亮 */
+.search-result-item.focused {
+    border-color: #a8b4c0 !important;
+    background: #1a1a1a !important;
+    box-shadow: 0 0 0 1px rgba(168, 180, 192, 0.2);
+}
+
+/* 搜索结果项动画 */
+.search-result-item {
+    transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+/* 搜索输入框聚焦增强 */
+#search-input:focus {
+    border-color: #a8b4c0;
+    box-shadow: 0 0 0 2px rgba(168, 180, 192, 0.1);
+}
+
+/* 滚动条样式 */
+#search-modal::-webkit-scrollbar {
+    width: 6px;
+}
+#search-modal::-webkit-scrollbar-track {
+    background: transparent;
+}
+#search-modal::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+/* 无结果动画 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.search-result-item {
+    animation: fadeIn 0.2s ease-out;
+}
+</style>
 
 <script>
 // 搜索数据
 let searchData = [];
+let currentFocusIndex = -1;
+let currentResults = [];
 
 // 当前语言
 const currentLang = '{{ .Lang }}';
@@ -39,54 +120,208 @@ async function loadSearchData() {
 
 // 打开搜索
 function openSearch() {
-    document.getElementById('search-modal').style.display = 'block';
-    document.getElementById('search-input').focus();
+    const modal = document.getElementById('search-modal');
+    const input = document.getElementById('search-input');
+    modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
+    input.value = '';
+    input.focus();
+    document.getElementById('search-results').innerHTML = '';
+    document.getElementById('search-result-count').style.display = 'none';
+    document.getElementById('search-nav-hint').style.display = 'none';
+    document.getElementById('search-shortcut-hint').style.display = 'none';
+    currentFocusIndex = -1;
+    currentResults = [];
 }
 
 // 关闭搜索
 function closeSearch() {
     document.getElementById('search-modal').style.display = 'none';
     document.body.style.overflow = 'auto';
+    currentFocusIndex = -1;
+    currentResults = [];
+}
+
+// 高亮匹配文本
+function highlightText(text, query) {
+    if (!query || !text) return escapeHtml(text || '');
+    const escaped = escapeHtml(text);
+    const escapedQuery = escapeHtml(query);
+    // 支持多关键词高亮（空格分隔）
+    const words = escapedQuery.trim().split(/\s+/).filter(w => w.length > 0);
+    let result = escaped;
+    words.forEach(word => {
+        const regex = new RegExp('(' + escapeRegex(word) + ')', 'gi');
+        result = result.replace(regex, '<span class="search-highlight">$1</span>');
+    });
+    return result;
+}
+
+function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// 获取上下文片段（匹配词周围的内容）
+function getContextSnippet(text, query, maxLength) {
+    maxLength = maxLength || 120;
+    if (!text || !query) return (text || '').substring(0, maxLength);
+    const lowerText = text.toLowerCase();
+    const lowerQuery = query.toLowerCase().trim().split(/\s+/)[0] || '';
+    const idx = lowerText.indexOf(lowerQuery);
+    if (idx === -1) return text.substring(0, maxLength);
+    const start = Math.max(0, idx - 30);
+    const end = Math.min(text.length, idx + maxLength - 30);
+    let snippet = text.substring(start, end);
+    if (start > 0) snippet = '...' + snippet;
+    if (end < text.length) snippet = snippet + '...';
+    return snippet;
 }
 
 // 执行搜索
 function performSearch(query) {
     const resultsDiv = document.getElementById('search-results');
+    const countDiv = document.getElementById('search-result-count');
+    const navHint = document.getElementById('search-nav-hint');
     const noResultsText = currentLang === 'en' ? 'No results found' : '没有找到相关结果';
-    
-    if (!query || query.length < 2) {
+    const resultsCountText = currentLang === 'en' ? 'results found' : '个结果';
+
+    currentFocusIndex = -1;
+    currentResults = [];
+
+    if (!query || query.trim().length < 2) {
         resultsDiv.innerHTML = '';
+        countDiv.style.display = 'none';
+        navHint.style.display = 'none';
         return;
     }
-    
+
+    const queryLower = query.toLowerCase().trim();
+    const queryWords = queryLower.split(/\s+/);
+
     const results = searchData.filter(item => {
         const searchStr = (item.title + ' ' + item.content + ' ' + (item.tags || []).join(' ')).toLowerCase();
-        return searchStr.includes(query.toLowerCase());
+        return queryWords.every(word => searchStr.includes(word));
     });
-    
+
     if (results.length === 0) {
-        resultsDiv.innerHTML = `<p style="color:#888;">${noResultsText}</p>`;
+        resultsDiv.innerHTML = `<p style="color:#666;text-align:center;padding:30px 0;font-size:0.95rem;">${noResultsText}</p>`;
+        countDiv.style.display = 'none';
+        navHint.style.display = 'none';
         return;
     }
-    
-    resultsDiv.innerHTML = results.slice(0, 10).map(item => `
-        <a href="${item.permalink}" style="display:block;padding:15px;background:#161616;border:1px solid #222;border-radius:8px;margin-bottom:10px;text-decoration:none;transition:border-color 0.3s;"
-           onmouseover="this.style.borderColor='#a8b4c0'" onmouseout="this.style.borderColor='#222'">
-            <h3 style="color:white;font-size:1rem;margin-bottom:5px;">${item.title}</h3>
-            <p style="color:#888;font-size:0.85rem;margin:0;">${item.content.substring(0, 100)}...</p>
-            ${item.tags ? `<div style="margin-top:8px;">${item.tags.map(tag => `<span style="background:#222;color:#888;padding:2px 8px;border-radius:4px;font-size:0.75rem;margin-right:5px;">${tag}</span>`).join('')}</div>` : ''}
-        </a>
-    `).join('');
+
+    // 显示结果数量
+    const displayCount = Math.min(results.length, 10);
+    countDiv.innerHTML = `${results.length} ${resultsCountText}${results.length > 10 ? ' (Top 10)' : ''}`;
+    countDiv.style.display = 'block';
+    navHint.style.display = 'block';
+
+    currentResults = results.slice(0, 10);
+
+    resultsDiv.innerHTML = currentResults.map((item, index) => {
+        const snippet = getContextSnippet(item.content, query, 120);
+        return `
+        <a href="${item.permalink}" class="search-result-item" data-index="${index}" role="option"
+           style="display:block;padding:14px;background:#161616;border:1px solid #222;border-radius:8px;margin-bottom:8px;text-decoration:none;cursor:pointer;"
+           onmouseenter="setFocus(${index})"
+           onclick="event.preventDefault(); window.location.href=this.href;">
+            <h3 style="color:white;font-size:1rem;margin:0 0 6px 0;line-height:1.4;">${highlightText(item.title, query)}</h3>
+            <p style="color:#888;font-size:0.85rem;margin:0;line-height:1.5;">${highlightText(snippet, query)}</p>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap;">
+                ${item.date ? `<span style="color:#555;font-size:0.75rem;">${item.date}</span>` : ''}
+                ${item.tags ? item.tags.map(tag => `<span style="background:#222;color:#888;padding:2px 8px;border-radius:4px;font-size:0.75rem;">${escapeHtml(tag)}</span>`).join('') : ''}
+            </div>
+        </a>`;
+    }).join('');
+}
+
+// 设置焦点（鼠标或键盘）
+function setFocus(index) {
+    const items = document.querySelectorAll('.search-result-item');
+    items.forEach(item => item.classList.remove('focused'));
+    currentFocusIndex = index;
+    if (items[index]) {
+        items[index].classList.add('focused');
+        items[index].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+}
+
+// 键盘导航
+function navigateResults(direction) {
+    const items = document.querySelectorAll('.search-result-item');
+    if (items.length === 0) return;
+
+    if (direction === 'down') {
+        currentFocusIndex = currentFocusIndex < items.length - 1 ? currentFocusIndex + 1 : 0;
+    } else if (direction === 'up') {
+        currentFocusIndex = currentFocusIndex > 0 ? currentFocusIndex - 1 : items.length - 1;
+    }
+    setFocus(currentFocusIndex);
 }
 
 // 键盘快捷键
 document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById('search-modal');
+    const isOpen = modal.style.display === 'block';
+
+    // Ctrl+K / Cmd+K 打开搜索
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
         e.preventDefault();
-        openSearch();
+        if (isOpen) {
+            closeSearch();
+        } else {
+            openSearch();
+        }
+        return;
     }
+
+    if (!isOpen) return;
+
+    // Escape 关闭
     if (e.key === 'Escape') {
+        e.preventDefault();
+        closeSearch();
+        return;
+    }
+
+    // 上下箭头导航
+    if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        navigateResults('down');
+        return;
+    }
+
+    if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        navigateResults('up');
+        return;
+    }
+
+    // Enter 打开选中结果
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        const items = document.querySelectorAll('.search-result-item');
+        if (currentFocusIndex >= 0 && items[currentFocusIndex]) {
+            const href = items[currentFocusIndex].getAttribute('href');
+            if (href) window.location.href = href;
+        } else if (items.length > 0) {
+            // 没有焦点时，Enter 打开第一个结果
+            const href = items[0].getAttribute('href');
+            if (href) window.location.href = href;
+        }
+        return;
+    }
+});
+
+// 点击遮罩层关闭
+document.getElementById('search-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
         closeSearch();
     }
 });

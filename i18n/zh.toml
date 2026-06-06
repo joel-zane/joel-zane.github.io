@@ -132,3 +132,9 @@
 
 [tableOfContents]
   other = "目录"
+
+[navigateResults]
+  other = "导航"
+
+[openResult]
+  other = "打开"
