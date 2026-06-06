@@ -272,7 +272,6 @@ var checkInterval=setInterval(function(){
 </script>
 
 <!-- Pjax: 无刷新页面切换 (音乐播放器不中断) -->
-<div id="pjax-badge" style="position:fixed;top:5px;left:5px;background:#a8b4c0;color:#0d0d0d;padding:3px 8px;border-radius:3px;font-size:11px;z-index:999999;font-family:monospace;cursor:pointer" onclick="this.style.display='none'">SPA ON</div>
 <script>
 (function(){
   var c = document.querySelector('.container');
@@ -305,8 +304,6 @@ var checkInterval=setInterval(function(){
 
   function go(url, push) {
     bar.style.width = '30%';
-    var badge = document.getElementById('pjax-badge');
-    if (badge) { badge.textContent = 'LOADING...'; badge.style.background = '#f0ad4e'; }
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url + (url.indexOf('?') >= 0 ? '&' : '?') + '_pjax=1', true);
     xhr.setRequestHeader('X-PJAX', 'true');
@@ -325,11 +322,10 @@ var checkInterval=setInterval(function(){
           if (typeof loadSearchData === 'function') try{loadSearchData()}catch(e){}
           bar.style.width = '100%';
           setTimeout(function(){bar.style.width='0'},300);
-          if (badge) { badge.textContent = 'SPA ON'; badge.style.background = '#a8b4c0'; }
-        } else { if (badge) { badge.textContent = 'FALLBACK'; badge.style.background = '#d9534f'; } location.href = url; }
+        } else { location.href = url; }
       } else { location.href = url; }
     };
-    xhr.onerror = function() { if (badge) { badge.textContent = 'ERROR'; badge.style.background = '#d9534f'; } location.href = url; };
+    xhr.onerror = function() { location.href = url; };
     xhr.send();
   }
 
