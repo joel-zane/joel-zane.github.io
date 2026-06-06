@@ -181,18 +181,21 @@
     <h3>🎵 我的歌单</h3>
     <button class="close-btn" onclick="toggleMusic()">✕</button>
   </div>
-  <meting-js
-    server="tencent"
-    type="playlist"
-    id="9609530515"
-    mutex="true"
-    preload="auto"
-    volume="0.7"
-    theme="#a8b4c0"
-    list-folded="false"
-    list-max-height="340px">
-  </meting-js>
+  <div class="playlist-tabs" id="playlist-tabs">
+    <button class="pl-tab active" data-id="9609530515">🎹 影视原声</button>
+    <button class="pl-tab" data-id="9609530462">🎤 华语</button>
+    <button class="pl-tab" data-id="9609530483">🇯🇵 日语</button>
+    <button class="pl-tab" data-id="9609530446">🎧 Hip-Hop</button>
+  </div>
+  <div id="meting-container"></div>
 </div>
+<style>
+.playlist-tabs{display:flex;gap:0;border-bottom:1px solid #333;overflow-x:auto;scrollbar-width:none}
+.playlist-tabs::-webkit-scrollbar{display:none}
+.pl-tab{flex:1;min-width:0;padding:8px 4px;background:none;border:none;color:#888;font-size:12px;cursor:pointer;white-space:nowrap;transition:all .2s;border-bottom:2px solid transparent}
+.pl-tab:hover{color:#ccc}
+.pl-tab.active{color:#a8b4c0;border-bottom-color:#a8b4c0}
+</style>
 <script>
 // 音乐面板开关
 function toggleMusic(){
@@ -201,13 +204,13 @@ function toggleMusic(){
   var isOpen=panel.classList.toggle('open');
   btn.classList.toggle('active',isOpen);
   btn.textContent=isOpen?'✕':'🎵';
-  try{sessionStorage.setItem('musicPanelOpen',isOpen?'1':'0')}catch(e){}
+  try{localStorage.setItem('musicPanelOpen',isOpen?'1':'0')}catch(e){}
 }
 
-// 页面加载时恢复面板状态
+// 恢复面板状态
 (function(){
   try{
-    if(sessionStorage.getItem('musicPanelOpen')==='1'){
+    if(localStorage.getItem('musicPanelOpen')==='1'){
       var panel=document.getElementById('music-panel');
       var btn=document.getElementById('music-toggle');
       panel.classList.add('open');
@@ -215,6 +218,48 @@ function toggleMusic(){
       btn.textContent='✕';
     }
   }catch(e){}
+})();
+
+// === 歌单切换 ===
+var playlists=[
+  {id:'9609530515',name:'影视原声'},
+  {id:'9609530462',name:'华语'},
+  {id:'9609530483',name:'日语'},
+  {id:'9609530446',name:'Hip-Hop'}
+];
+
+function loadPlaylist(id){
+  var container=document.getElementById('meting-container');
+  container.innerHTML='';
+  var el=document.createElement('meting-js');
+  el.setAttribute('server','tencent');
+  el.setAttribute('type','playlist');
+  el.setAttribute('id',id);
+  el.setAttribute('mutex','true');
+  el.setAttribute('preload','auto');
+  el.setAttribute('volume','0.7');
+  el.setAttribute('theme','#a8b4c0');
+  el.setAttribute('list-folded','false');
+  el.setAttribute('list-max-height','340px');
+  container.appendChild(el);
+  // 更新 tab 状态
+  document.querySelectorAll('.pl-tab').forEach(function(t){
+    t.classList.toggle('active',t.getAttribute('data-id')===id);
+  });
+  try{localStorage.setItem('musicPlaylist',id)}catch(e){}
+}
+
+// tab 点击事件
+document.getElementById('playlist-tabs').addEventListener('click',function(e){
+  var tab=e.target.closest('.pl-tab');
+  if(!tab)return;
+  loadPlaylist(tab.getAttribute('data-id'));
+});
+
+// 初始化：恢复上次选择的歌单
+(function(){
+  var saved=localStorage.getItem('musicPlaylist')||'9609530515';
+  loadPlaylist(saved);
 })();
 
 // 监听 APlayer 初始化后恢复播放状态
