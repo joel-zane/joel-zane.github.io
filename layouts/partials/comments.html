@@ -5,7 +5,7 @@
   import { init } from '/js/waline.js?v=1780653157';
   init({
     el: '#waline',
-    serverURL: 'https://40.233.72.74/api/waline',
+    serverURL: '/api/waline',
     lang: '{{ if eq .Lang "en" }}en{{ else }}zh-CN{{ end }}',
     dark: 'html:not([data-theme="light"])',
     meta: ['nick', 'mail'],
