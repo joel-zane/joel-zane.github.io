@@ -73,38 +73,8 @@
     <!-- Search -->
     {{- partial "search.html" . -}}
     
-    <!-- Busuanzi Counter -->
-    {{ if .Site.Params.busuanzi }}
-    <script>
-    (function(){
-      function loadCounter(){
-        var cb='__bsz_cb_'+Math.random().toString(36).slice(2);
-        window[cb]=function(d){
-          var pv=document.getElementById('busuanzi_value_site_pv');
-          var uv=document.getElementById('busuanzi_value_site_uv');
-          if(pv) pv.innerHTML=d.site_pv;
-          if(uv) uv.innerHTML=d.site_uv;
-          delete window[cb];
-        };
-        var s=document.createElement('script');
-        s.src='https://busuanzi.ibruce.info/busuanzi?jsonpCallback='+cb;
-        s.onerror=function(){
-          var pv=document.getElementById('busuanzi_value_site_pv');
-          var uv=document.getElementById('busuanzi_value_site_uv');
-          if(pv) pv.innerHTML='--';
-          if(uv) uv.innerHTML='--';
-        };
-        document.getElementsByTagName('head')[0].appendChild(s);
-      }
-      if(document.readyState==='loading'){
-        document.addEventListener('DOMContentLoaded',loadCounter);
-      } else {
-        loadCounter();
-      }
-    })();
-    </script>
-    {{ end }}
-    
+    <!-- Umami Analytics -->
+    <script async defer data-website-id="85c5944e-41ac-4dd0-ac06-f8fe46418831" src="https://umami.joel-zane.eu.org/script.js"></script>
     <!-- Theme Toggle Script -->
     <script>
     function toggleTheme() {

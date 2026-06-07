@@ -19,12 +19,28 @@
         </ul>
         <a href="{{ "posts/" | relLangURL }}" class="view-all">{{ i18n "viewAll" }}</a>
 
-        {{ if .Site.Params.busuanzi }}
-        <div class="stats">
-            <span id="busuanzi_container_site_pv">{{ i18n "totalVisits" }} <span id="busuanzi_value_site_pv">...</span> {{ i18n "times" }}</span>
-            <span id="busuanzi_container_site_uv">{{ i18n "visitors" }} <span id="busuanzi_value_site_uv">...</span> {{ i18n "people" }}</span>
+        <div class="stats" id="umami-stats">
+            <span>{{ i18n "totalVisits" }} <span id="umami-pv">...</span> {{ i18n "times" }}</span>
+            <span>{{ i18n "visitors" }} <span id="umami-uv">...</span> {{ i18n "people" }}</span>
         </div>
-        {{ end }}
+        <script>
+        (function(){
+          fetch('/api/stats')
+            .then(function(r){return r.json()})
+            .then(function(d){
+              var pv=document.getElementById('umami-pv');
+              var uv=document.getElementById('umami-uv');
+              if(pv) pv.textContent=d.pageviews;
+              if(uv) uv.textContent=d.visitors;
+            })
+            .catch(function(){
+              var pv=document.getElementById('umami-pv');
+              var uv=document.getElementById('umami-uv');
+              if(pv) pv.textContent='--';
+              if(uv) uv.textContent='--';
+            });
+        })();
+        </script>
     </div>
 
     <div class="hero-right">
