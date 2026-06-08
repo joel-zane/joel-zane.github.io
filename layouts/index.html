@@ -25,7 +25,7 @@
         </div>
         <script>
         (function(){
-          fetch('/api/stats')
+          fetch('http://40.233.72.74/api/stats')
             .then(function(r){return r.json()})
             .then(function(d){
               var pv=document.getElementById('umami-pv');
