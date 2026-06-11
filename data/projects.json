@@ -25,6 +25,14 @@
     "featured": true
   },
   {
+    "name": "体感贪吃蛇",
+    "description": "STM32G474 + MPU6500 + ST7735 手势控制贪吃蛇，倾斜改变方向，摇一摇重置",
+    "image": "/images/projects/snake.svg",
+    "tags": ["STM32", "嵌入式", "C语言", "Keil"],
+    "url": "https://github.com/joel-zane/gesture-snake-g474",
+    "featured": true
+  },
+  {
     "name": "机器学习项目",
     "description": "深度学习与机器学习相关实验",
     "image": "/images/projects/ml.jpg",
