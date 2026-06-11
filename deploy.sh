@@ -9,6 +9,7 @@ COMMIT_MSG="${1:-deploy: update site}"
 cd "$SITE_DIR"
 
 echo "🔨 Building Hugo..."
+sudo chown -R ubuntu:ubuntu "$DEPLOY_DIR"
 hugo --gc --minify -d "$DEPLOY_DIR"
 sudo chown -R www-data:www-data "$DEPLOY_DIR"
 sudo chmod -R 755 "$DEPLOY_DIR"
